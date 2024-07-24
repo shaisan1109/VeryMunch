@@ -794,3 +794,53 @@ input.textfield-register {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
+/* FAQ Container */
+.faq-container {
+    width: 75%;
+    margin: 2rem auto;
+    background-color: #ffffff;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+}
+
+/* FAQ Item */
+.faq-item {
+    margin-bottom: 1.5rem;
+    border-bottom: 1px solid #e9e9e9;
+    padding-bottom: 1rem;
+    cursor: pointer;
+}
+
+/* FAQ Question */
+.faq-question {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #396C03;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* FAQ Answer */
+.faq-answer {
+    font-size: 1rem;
+    color: #666;
+    margin-top: 1rem;
+    display: none; /* Initially hidden */
+}
+
+/* Arrow Icon */
+.faq-question .material-symbols-outlined {
+    font-size: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.faq-item.active .faq-question .material-symbols-outlined {
+    transform: rotate(180deg);
+}
+
+.faq-item.active .faq-answer {
+    display: block;
+}
