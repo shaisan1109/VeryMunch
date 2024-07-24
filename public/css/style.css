@@ -1239,3 +1239,143 @@ body {
     font-weight: 600;
 }
 
+
+/* ========================================
+   View Selected Restaurant
+   ======================================== */
+
+/* NOTE: the toolbar on top was taken from HOME */
+
+/* resto image */
+.breadcrumb-container {
+    font-size: medium;
+    margin-bottom: 1%;
+}
+
+.restaurant-image {
+    background-color: #396C03;
+    height: 20em;
+    border-radius: 15px;
+
+    overflow: hidden; 
+    position: relative;
+}
+
+.restaurant-image img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* resto name */
+#selected-restaurant-name {
+    font-size: x-large;
+    font-weight: bold;
+    padding-top: 1%;
+    padding-bottom: 1%;
+}
+
+/* resto details - address, reviews, operation hours */
+.selected-restaurant-details {
+    display: flex;
+    flex-direction: column;
+    font-size: medium;
+}
+
+/* to simply center the text and icon, per line, in the selected-restaurant-details container */
+.center-details {
+    display: flex;
+    align-items: center;
+    height: 2em;
+    margin-top: 1%;
+}
+
+/* to make the location icon red */
+#red-location {
+    color: #d40a0a;
+}
+
+/* to make the review icon yellow */
+#yellow-star {
+    color: #ffcc00;
+}
+
+/* for "today's discounted products" */
+#todays-discount-label {
+    font-size: x-large;
+    margin-top: 5%;
+}
+
+/* discounted products offered */
+.discounted-products-container {
+    padding: 3%;
+}
+
+.discounted-products-selector {
+    background-color: #ffffff;
+    width: 45%;
+    height: 10em;
+    border-radius: 10px;
+    display: flex;
+}
+
+.discounted-products-image-container {
+    width: 35%;
+    margin: 2%;
+    overflow: hidden;
+    position: relative;
+}
+
+.discounted-products-image-container img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.discounted-products-itemdetails-container {
+    width: 65%;
+    border-radius: 0 10px 10px 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.discounted-products-itemname {
+    margin-left: 3%;
+    height: 35%;
+    display: block;
+    line-height: 3.5em;
+    font-size: large;
+    white-space: nowrap; 
+    overflow: hidden; 
+    text-overflow: ellipsis;
+    width: 265px;
+    position: relative;
+    cursor: default;
+}
+
+/* since item names can get truncated, this will show a tooltip when hovered */
+.discounted-products-itemname::after {
+    content: attr(data-full-text);
+    position: absolute;
+    bottom: 100%;
+    left: 0;
+    padding: 5px;
+    background-color: #333;
+    color: #fff;
+    font-size: small;
+    white-space: nowrap;
+    opacity: 0;
+    transition: opacity 0.3s;
+    z-index: 10;
+    transform: translateY(-5px);
+}
+
+.discounted-products-itemname:hover::after {
+    opacity: 1;
+}
