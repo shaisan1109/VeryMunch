@@ -1,8 +1,9 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Restaurant</title> <!-- LAGAY SELECTED RESTO NAME-->
         <link rel="preconnect" href="https://fonts.googleapis.com">
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -95,7 +96,7 @@
                 <div class="discounted-products-container">
                     <div class="discounted-products-selector">
                         <div class="discounted-products-image-container">
-                            <img src="https://dunkindonuts.com.sg/wp-content/uploads/2019/09/CHOCO-BUTTERNUT.png">
+                            <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
                         </div>
                         <div class="discounted-products-itemdetails-container">
                             <div class="discounted-products-itemname" title="PLS CHANGE THIS TO THE ITEM NAME TOO">
@@ -109,7 +110,7 @@
                                 [product price]
                                 </span>
                                 <span class="discounted-products-addtocart">
-                                    <button class="addtocartbutton">
+                                    <button class="addtocartbutton" onclick="showPopup()">
                                         +
                                     </button>
                                 </span>
@@ -117,80 +118,44 @@
                         </div>
                     </div>
 
-                    <!-- duplicated containers just to test the layouot -->
-                    <div class="discounted-products-selector">
-                        <div class="discounted-products-image-container">
-                            <img src="https://dunkindonuts.com.sg/wp-content/uploads/2019/09/CHOCO-BUTTERNUT.png">
+                    <!-- Popup window for adding an item to cart -->
+                    <div id="popup-overlay" class="popup-overlay"></div>
+                    <div id="popup-window" class="popup-window">
+                        <div class="selected-product-container">
+                        <div class="selected-product-image">
+                            <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
                         </div>
-                        <div class="discounted-products-itemdetails-container">
-                            <div class="discounted-products-itemname" title="PLS CHANGE THIS TO THE ITEM NAME TOO">
-                                [Item name sample here pls also change title in div container]
-                            </div>
-                            <span class="discounted-products-itemdesc">
-                                hi this is a sample product description
+                        <div class="selected-product-details-container">
+                        <div class="selected-product-name">
+                            <span id="selected-product-name-style">
+                                [Sample product name here]
                             </span>
-                            <div class="discounted-products-price-container">
-                                <span class="discounted-products-sellprice">
-                                [product price]
-                                </span>
-                                <span class="discounted-products-addtocart">
-                                    <button class="addtocartbutton">
-                                        +
-                                    </button>
-                                </span>
-                            </div>
+                            <span>
+                                [sample price]
+                            </span>
+                        </div>
+                        <div class="selected-product-description">
+                            hi this is a sample product description
+                        </div>
+                        <div class="selected-product-allergen">
+                            hi the product allergens go here
+                        </div>
+                        <div class="quantity-counter">
+                            <button class="quantity-button-style" id="decrease-button">-</button>
+                            <input type="text" id="product-quantity" name="product-quantity" class="quantity-field-style" value="0">
+                            <button class="quantity-button-style" id="increase-button">+</button>
+                        </div>
+                        <div class="decision-button-container">
+                            <button class="cancel-decision-button" onclick="hidePopup()">Cancel</button>
+                            <button class="confirm-decision-button">Add To Cart</button>
+                        </div>
+                        </div>
                         </div>
                     </div>
-                    <div class="discounted-products-selector">
-                        <div class="discounted-products-image-container">
-                            <img src="https://dunkindonuts.com.sg/wp-content/uploads/2019/09/CHOCO-BUTTERNUT.png">
-                        </div>
-                        <div class="discounted-products-itemdetails-container">
-                            <div class="discounted-products-itemname" title="PLS CHANGE THIS TO THE ITEM NAME TOO">
-                                [Item name sample here pls also change title in div container]
-                            </div>
-                            <span class="discounted-products-itemdesc">
-                                hi this is a sample product description
-                            </span>
-                            <div class="discounted-products-price-container">
-                                <span class="discounted-products-sellprice">
-                                [product price]
-                                </span>
-                                <span class="discounted-products-addtocart">
-                                    <button class="addtocartbutton">
-                                        +
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="discounted-products-selector">
-                        <div class="discounted-products-image-container">
-                            <img src="https://dunkindonuts.com.sg/wp-content/uploads/2019/09/CHOCO-BUTTERNUT.png">
-                        </div>
-                        <div class="discounted-products-itemdetails-container">
-                            <div class="discounted-products-itemname" title="PLS CHANGE THIS TO THE ITEM NAME TOO">
-                                [Item name sample here pls also change title in div container]
-                            </div>
-                            <span class="discounted-products-itemdesc">
-                                hi this is a sample product description
-                            </span>
-                            <div class="discounted-products-price-container">
-                                <span class="discounted-products-sellprice">
-                                [product price]
-                                </span>
-                                <span class="discounted-products-addtocart">
-                                    <button class="addtocartbutton">
-                                        +
-                                    </button>
-                                </span>
-                            </div>
-                        </div>
-                    </div>
-                    <!--end of duplicated containers-->
 
                 </div>
             </div>
         </div>
+        <script src="selectedresto.js"></script>
     </body>
 </html>

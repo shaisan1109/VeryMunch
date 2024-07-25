@@ -1419,4 +1419,175 @@ body {
     color: #ffffff;
     cursor: pointer;
     font-size: xx-large;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.addtocartbutton:hover {
+    background-color: #244204;
+}
+
+/* ========================================
+   Pop Up window for adding item to cart
+   ======================================== */
+
+/* Popup Overlay */
+.popup-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: none;
+    z-index: 1000;
+}
+
+/* Popup Window */
+.popup-window {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+    z-index: 1001;
+    display: none;
+    width: 50%;
+    height: 50%;
+    overflow: auto;
+}
+
+.selected-product-container{
+    width: 100%;
+    height: 100%;
+    display: flex;
+}
+
+/* selected product image */
+.selected-product-image{
+    border-radius: 10px;
+    width: 40%;
+    height: 100%;
+    overflow: hidden;
+    position: relative;
+}
+
+.selected-product-image img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+/* selected product details - name, description */
+.selected-product-details-container{
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    padding-left: 5%;
+}
+
+.selected-product-name{
+    height: 20%;
+    padding-top: 2%;
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
+}
+
+#selected-product-name-style{
+    font-weight: 600;
+}
+
+.selected-product-description{
+    height: 25%;
+    display: flex;
+    align-items: center;
+}
+
+.selected-product-allergen{
+    height: 13%;
+    margin-bottom: 3%;
+    font-size: small;
+    color: #6C6C6C;
+}
+
+.quantity-counter{
+    height: 13%;
+    display: flex;
+    justify-content: center;
+}
+
+.quantity-button-style{
+    width: 20%;
+    border-radius: 10px;
+    border-style: none;
+    background-color: #dedede;
+    color: #ffffff;
+    font-size: x-large;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.quantity-button-style:hover {
+    background-color: #c3c3c3;
+}
+
+.quantity-field-style{
+    width: 20%;
+    margin-right: 4%;
+    margin-left: 4%;
+    border: 1px, solid, #878787;
+    font-size: large;
+    text-align: center;
+    cursor: pointer;
+}
+
+/* cancel or add order to cart */
+.decision-button-container{
+    margin-top: 5%;
+    margin-bottom: 2%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.cancel-decision-button{
+    background-color: #af0000;
+    width: 35%;
+    height: 100%;
+    border-style: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: larger;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cancel-decision-button:hover {
+    background-color: #940202;
+}
+
+.confirm-decision-button{
+    background-color: #396C03;
+    width: 35%;
+    height: 100%;
+    border-style: none;
+    border-radius: 10px;
+    color: #ffffff;
+    font-size: larger;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.confirm-decision-button:hover {
+    background-color: #244204;
 }
