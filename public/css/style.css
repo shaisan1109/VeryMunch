@@ -1246,12 +1246,13 @@ body {
 
 /* NOTE: the toolbar on top was taken from HOME */
 
-/* resto image */
+/* breadcrumb */
 .breadcrumb-container {
     font-size: medium;
     margin-bottom: 1%;
 }
 
+/* resto image */
 .restaurant-image {
     background-color: #396C03;
     height: 20em;
@@ -1278,14 +1279,13 @@ body {
     padding-bottom: 1%;
 }
 
-/* resto details - address, reviews, operation hours */
+/* resto address, reviews, operation hours */
 .selected-restaurant-details {
     display: flex;
     flex-direction: column;
     font-size: medium;
 }
 
-/* to simply center the text and icon, per line, in the selected-restaurant-details container */
 .center-details {
     display: flex;
     align-items: center;
@@ -1293,17 +1293,15 @@ body {
     margin-top: 1%;
 }
 
-/* to make the location icon red */
 #red-location {
     color: #d40a0a;
 }
 
-/* to make the review icon yellow */
 #yellow-star {
     color: #ffcc00;
 }
 
-/* for "today's discounted products" */
+/* "today's discounted products" label */
 #todays-discount-label {
     font-size: x-large;
     margin-top: 5%;
@@ -1326,6 +1324,7 @@ body {
     margin-bottom: 2%;
 }
 
+/* discounted products image */
 .discounted-products-image-container {
     width: 35%;
     margin: 2%;
@@ -1342,6 +1341,7 @@ body {
     object-fit: contain;
 }
 
+/* discounted products name, description, price */
 .discounted-products-itemdetails-container {
     margin-left: 3%;
     width: 65%;
