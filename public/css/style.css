@@ -1312,6 +1312,9 @@ body {
 /* discounted products offered */
 .discounted-products-container {
     padding: 3%;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .discounted-products-selector {
@@ -1320,6 +1323,7 @@ body {
     height: 10em;
     border-radius: 10px;
     display: flex;
+    margin-bottom: 2%;
 }
 
 .discounted-products-image-container {
@@ -1339,6 +1343,7 @@ body {
 }
 
 .discounted-products-itemdetails-container {
+    margin-left: 3%;
     width: 65%;
     border-radius: 0 10px 10px 0;
     display: flex;
@@ -1346,7 +1351,6 @@ body {
 }
 
 .discounted-products-itemname {
-    margin-left: 3%;
     height: 35%;
     display: block;
     line-height: 3.5em;
@@ -1378,4 +1382,41 @@ body {
 
 .discounted-products-itemname:hover::after {
     opacity: 1;
+}
+
+.discounted-products-itemdesc{
+    color: #6C6C6C;
+    font-size: small;
+    height: 30%;
+}
+
+.discounted-products-price-container{
+    flex-grow: 1;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.discounted-products-sellprice{
+    width: 50%;
+    display: flex;
+    
+    align-items: center;
+}
+
+.discounted-products-addtocart{
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.addtocartbutton{
+    height: 100%;
+    width: 40%;
+    border-radius: 50%;
+    border-style: none;
+    background-color: #396C03;
+    color: #ffffff;
+    cursor: pointer;
+    font-size: xx-large;
 }
