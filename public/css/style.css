@@ -1591,3 +1591,157 @@ body {
 .confirm-decision-button:hover {
     background-color: #244204;
 }
+
+/* ========================================
+   View cart pagw
+   ======================================== */
+
+/* NOTE: breadcrumb container taken from selectedresto */
+
+.reviews-and-ratings-label{
+    margin-top: 1%;
+    font-size: x-large;
+    font-weight: 700;
+}
+
+/* total ratings */
+.total-reviews-container{
+    background-color: #ffffff;
+    max-height: 10%;
+    width: 55%;
+    margin-top: 2%;
+    margin-bottom: 0.5%;
+    border-radius: 5px;
+    display: flex;
+    align-items: center;
+    padding-left: 2%;
+}
+
+#average-review-style{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+#reviews-and-rating-star{
+    color: #ffcc00;
+    font-size: xx-large;
+}
+
+#total-review-style{
+    font-size: larger;
+    font-weight: 500;
+}
+
+.review-counts-container{
+    background-color: #ffffff;
+    max-height: 35%;
+    width: 53%;
+    border-radius: 5px;
+    padding: 2%;
+}
+
+.rating-status-container{
+    height: 20%;
+    display: flex;
+    align-items: center;
+}
+
+#rating-number-style{
+    font-size: larger;
+    font-weight: 500;
+    width: 7%;
+}
+
+#rating-bar-style {
+    width: 100%;
+    height: 10px;
+    -webkit-appearance: none;
+    background-color: #e0e0e0;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#rating-bar-style::-webkit-progress-bar {
+    background-color: #e0e0e0;
+    border-radius: 10px;
+}
+
+#rating-bar-style::-webkit-progress-value {
+    background-color: #f0c14b;
+    border-radius: 10px;
+}
+
+/* individual buyer reviews */
+.review-container{
+    margin-top: 3%;
+    background-color: #ffffff;
+    width: 70%;
+    border-radius: 5px;
+    height: 13rem;
+    display: flex;
+    flex-direction: column;
+    padding: 2%;
+}
+
+.review-buyer-name{
+    font-size: larger;
+    font-weight: 600;
+}
+
+.review-rating-here{
+    font-size: medium;
+}
+
+.buyer-stars-container{
+    display: flex;
+    align-items: center;
+}
+
+#buyer-stars-style{
+    color: #f0c14b;
+    height: 10%;
+    border-radius: 0;
+    margin-right: -2.5%;
+}
+
+.buyer-rating-number{
+    margin-left: 1%;
+    font-size: large;
+    font-weight: 500;
+}
+
+.buyer-review{
+    height: 40%;
+    margin-top: 2%;
+    display: flex;
+    align-items: center;
+}
+
+.buyer-rated-order{
+    font-size: small;
+    color: #6C6C6C;
+    height: 15%;
+}
+
+.buyer-review-thumbs-up{
+    flex-grow: 1;
+    display: flex;
+    align-items: center;
+}
+
+#thumbs-up{
+    height: 15%;
+    color: #396C03;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+/* Color of thumbs up when clicked */
+#thumbs-up.active {
+    color: orange;
+}
+
+#helpful-text-style{
+    font-size: small;
+    color: #6C6C6C;
+}
