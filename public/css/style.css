@@ -1745,3 +1745,358 @@ body {
     font-size: small;
     color: #6C6C6C;
 }
+
+
+/* ========================================
+   View cart page
+   ======================================== */
+
+/* "Your Cart" label style */
+.your-cart-label-container{
+    font-size: xx-large;
+    display: flex;
+    margin-bottom: 4%;
+}
+
+#your-cart-label{
+    margin-right: 2%;
+    font-weight: 700;
+}
+
+/* Cart items counter */
+#cart-items-counter{
+    background-color: #E27C02;
+    border-radius: 100%;
+    width: 4.5%;
+    text-align: center;
+    color: #ffffff;
+    font-weight: 600;
+}
+
+/* parent container for cart items */
+.cart-items-container{
+    height: auto;
+}
+
+/* cart items */
+.cart-items-selector{
+    background-color: #ffffff;
+    height: 15rem;
+    border-radius: 10px;
+    display: flex;
+    margin-bottom: 2%;
+}
+
+.cart-items-image{
+    height: 100%;
+    width: 20%;
+    overflow: hidden;
+    position: relative;
+    border-radius: 10px;
+}
+
+.cart-items-image img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.cart-items-details{
+    width: 50%;
+    padding: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.cart-items-productname{
+    font-size: x-large;
+    font-weight: 600;
+}
+
+.cart-items-productdesc{
+    flex-grow: 1;
+    padding-top: 3%;
+    font-size: small;
+}
+
+.cart-items-quantity-container{
+    flex-grow: 1;
+    padding-top: 2%;
+    padding-right: 2%;
+    padding-bottom: 2%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.cart-items-totalprice{
+    background-color: #f0f0f0;
+    height: 25%;
+    width: 65%;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: larger;
+    font-weight: 600;
+}
+
+.cart-items-quantity{
+    height: 20%;
+    margin-top: 10%;
+    display: flex;
+    justify-content: center;
+}
+
+.cart-quantity-button-style{
+    border-radius: 5px;
+    width: 18%;
+    border: none;
+    background-color: #396C03;
+    color: #ffffff;
+    font-size: x-large;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cart-quantity-button-style:hover {
+    background-color: #264802;
+}
+
+.cart-remove-item{
+    background-color: #BA2D00;
+    margin-top: 13%;
+    height: 20%;
+    width: 65%;
+    border-radius: 5px;
+    color: #ffffff;
+    font-size: larger;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cart-remove-item:hover {
+    background-color: #992600;
+}
+
+/* Shipping options */
+.delivery-option-container{
+    margin-top: 5%;
+}
+
+.delivery-option-button-style{
+    height: 3rem;
+    width: 10%;
+    margin-right: 2%;
+    margin-bottom: 3%;
+    border-radius: 50px;
+    border-style: none;
+    font-size: large;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.delivery-option-button-style:hover {
+    background-color: #dddddd;
+}
+
+.delivery-option-button-active{
+    background-color: #dcdcdc;
+    color: #396C03;
+}
+
+/* Delivery address parent container */
+.delivery-address-container{
+    display: flex;
+    font-size: large;
+    border-bottom: 2px solid black;
+}
+
+/* Current address that's set */
+.deliver-current-set-address{
+    display: flex;
+    align-items: center;
+    height: 10%;
+    width: 75%;
+    margin-bottom: 3%;
+}
+
+#deliver-location-icon-style{
+    color: #d40a0a;
+    border-radius: 0;
+    height: 100%;
+}
+
+/* Edit address */
+.deliver-edit-set-address{
+    width: 25%;
+    display: flex;
+    justify-content: center;
+    margin-bottom: 3%;
+}
+
+/* Payment details parent container */
+.cart-payment-details{
+    display: flex;
+    flex-direction: column;
+    margin-top: 3%;
+}
+
+#cart-payment-method-label{
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: 3%;
+}
+
+.cart-available-payment-method{
+    display: flex;
+    padding-left: 2%;
+    padding-right: 2%;
+}
+
+/* Payment method container */
+.cart-payment-selector{
+    width: 25%;
+    margin-right: 3%;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cart-payment-selector:hover {
+    background-color: #e7e7e7;
+}
+
+.cod-icon-container{
+    height: 55%;
+    width: 45%;
+    overflow: hidden;
+    position: relative;
+    
+}
+
+.cod-icon-container img {
+    position: relative;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+}
+
+.delivery-edit-payment-method{
+    margin-top: 2%;
+    margin-bottom: 3%;
+    padding-bottom: 3%;
+    width: 100%;
+    font-size: large;
+    display: flex;
+    justify-content: flex-end;
+    border-bottom: 2px solid black;
+}
+
+/* Styles for the selected payment method */
+.payment-card.selected {
+    background-color: #FF8B00;
+    border-color: FF8B00;
+    color: #fff;
+}
+
+#align-edit-payment-method-label{
+    margin-right: 7%;
+}
+
+/* Order summary parent container */
+.order-summary-container{
+    margin-bottom: 3%;
+    display: flex;
+    flex-direction: column;
+}
+
+#order-summary-label{
+    font-size: x-large;
+    font-weight: 700;
+    margin-bottom: 2%;
+}
+
+.order-summary-product-list{
+    display: flex;
+}
+
+.cart-summary-item-name{
+    font-size: large;
+    padding-left: 2%;
+    width: 75%;
+}
+
+.cart-summary-item-price{
+    font-size: large;
+    padding-right: 2%;
+    flex-grow: 1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.subtotal-fee-container{
+    display: flex;
+    margin-top: 2%;
+}
+
+.fee-label-container{
+    width: 80%;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+}
+
+#subtotal-and-otherfees-label{
+    font-size: larger;
+    font-weight: 600;
+}
+
+#total-amount-label{
+    font-size: larger;
+    font-weight: 600;
+    margin-top: 3.4%;
+}
+
+.fee-prices-container{
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: end;
+    font-size: larger;
+}
+
+.total-fee-container{
+    background-color: #ffffff;
+    margin-top: 3%;
+    height: 3rem;
+    padding-left: 4%;
+    display: flex;
+    align-items: center;
+}
+
+.cart-order-button{
+    background-color: #396C03;
+    color: #ffffff;
+    font-size: x-large;
+    font-weight: 600;
+    width: 100%;
+    height: 3rem;
+    margin-bottom: 5%;
+    border-radius: 8px;
+    border-style: none;
+    cursor: pointer;
+    transition: background-color 0.3s, border-color 0.3s;
+}
+
+.cart-order-button:hover {
+    background-color: #264802;
+}

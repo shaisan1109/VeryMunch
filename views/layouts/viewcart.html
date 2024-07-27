@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Cart</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <div class="parentcontainer">
+        <!-- NAVBAR START -->
+        <div class="left-home-container">
+            <h1 id="navbar-logo">Very Munch</h1>
+            <a href="home.html" class="navbar-option-container">
+                <span class="material-symbols-outlined">home</span>
+                Home
+            </a>
+            <a href="order-history.html" class="navbar-option-container">
+                <span class="material-symbols-outlined">list_alt</span>
+                Order History
+            </a>
+            <a href="reviews.html" class="navbar-option-container">
+                <span class="material-symbols-outlined">reviews</span>
+                Reviews
+            </a>
+            <a href="help.html" class="navbar-option-container">
+                <span class="material-symbols-outlined">help</span>
+                Help
+            </a>
+            <a href="settings.html" class="navbar-option-container">
+                <span class="material-symbols-outlined">settings</span>
+                Settings
+            </a>
+        </div>
+        <!-- NAVBAR END -->
+         <!-- parent container taken from HOME -->
+         <div class="right-home-container">
+            <!-- toolbar section taken from HOME -->
+            <div class="right-home-header">
+                <div class="right-home-header-label">
+                    <!-- i kept this, despite not containing anything, so the toolbar would stay on the top right -->
+                </div>
+                <div class="right-home-header-toolbar">
+                    <span class="toolbar-container">
+                        <span class="material-symbols-outlined toolbar-icon">
+                            notifications
+                            </span>
+                    </span>
+                    <span class="toolbar-container">
+                        <span class="material-symbols-outlined toolbar-icon">
+                            shopping_cart
+                            </span>
+                    </span>
+                    <span class="toolbar-container">
+                        <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e">
+                    </span>
+                </div>
+            </div>
+            <!-- Cart label and item counter -->
+            <div class="your-cart-label-container">
+                <span id="your-cart-label">
+                    Your Cart
+                </span>
+                <span id="cart-items-counter">
+                    2
+                </span>
+            </div>
+            <!-- Cart products -->
+            <div class="cart-items-container">
+                <!-- [reusable code] Item in cart -->
+                <div class="cart-items-selector">
+                    <div class="cart-items-image">
+                        <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
+                    </div>
+                    <div class="cart-items-details">
+                        <span class="cart-items-productname">
+                            [Product name here]
+                        </span>
+                        <span>
+                            [store address goes here]
+                        </span>
+                        <span>
+                            84.00
+                        </span>
+                        <span class="cart-items-productdesc">
+                            hi this is a sample product description
+                        </span>
+                    </div>
+                    <div class="cart-items-quantity-container">
+                        <div class="cart-items-totalprice">
+                            Total: 84.00
+                        </div>
+                        <div class="cart-items-quantity">
+                            <button class="cart-quantity-button-style" id="decrease-button">-</button>
+                            <input type="text" id="product-quantity" name="product-quantity" class="quantity-field-style" value="">
+                            <button class="cart-quantity-button-style" id="increase-button">+</button>
+                        </div>
+                        <div class="cart-remove-item">
+                            Remove
+                        </div>
+                    </div>
+                </div>
+                <!-- [duplicate - reusable code] Item in cart -->
+                <div class="cart-items-selector">
+                    <div class="cart-items-image">
+                        <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
+                    </div>
+                    <div class="cart-items-details">
+                        <span class="cart-items-productname">
+                            [Product name here]
+                        </span>
+                        <span>
+                            [store address goes here]
+                        </span>
+                        <span>
+                            84.00
+                        </span>
+                        <span class="cart-items-productdesc">
+                            hi this is a sample product description
+                        </span>
+                    </div>
+                    <div class="cart-items-quantity-container">
+                        <div class="cart-items-totalprice">
+                            Total: 84.00
+                        </div>
+                        <div class="cart-items-quantity">
+                            <button class="cart-quantity-button-style" id="decrease-button">-</button>
+                            <input type="text" id="product-quantity" name="product-quantity" class="quantity-field-style" value="">
+                            <button class="cart-quantity-button-style" id="increase-button">+</button>
+                        </div>
+                        <div class="cart-remove-item">
+                            Remove
+                        </div>
+                    </div>
+                </div>
+                <!-- Shipping option    NOTE: only delivery works for now -->
+                <div class="delivery-option-container">
+                    <button class="delivery-option-button-style delivery-option-button-active">
+                        Delivery
+                    </button>
+                    <button class="delivery-option-button-style">
+                        Pickup
+                    </button>
+                </div>
+                <!-- Delivery Address details -->
+                <div class="delivery-address-container">
+                <div class="deliver-current-set-address">
+                    <span class="material-symbols-outlined" id="deliver-location-icon-style">
+                        location_on
+                    </span>
+                    <span>
+                        [address goes here]
+                    </span>
+                </div>
+                <div class="deliver-edit-set-address">
+                    <a href="">Edit Address</a>
+                </div>
+                </div>
+                <!-- Payment Method -->
+                <div class="cart-payment-details">
+                    <span id="cart-payment-method-label">
+                        Payment Method
+                    </span>
+                    <div class="cart-available-payment-method">
+                        <!-- this section was borrowed from payment methods of SETTINGS -->
+                            <!-- [reusable code] payment method options -->
+                            <div class="payment-card cart-payment-selector">
+                                <span class="payment-logo visa"></span>
+                                <div class="payment-info">
+                                    <p>Visa ... 6789</p>
+                                    <p>Expires 06/30</p>
+                                </div>
+                            </div>
+                            <div class="payment-card cart-payment-selector">
+                                <span class="payment-logo maya"></span>
+                                <div class="payment-info">
+                                    <p>Maya ... 6789</p>
+                                    <p>Expires 07/28</p>
+                                </div>
+                            </div>
+                            <div class="payment-card cart-payment-selector">
+                                <span class="cod-icon-container">
+                                    <img src="https://cdn-icons-png.freepik.com/512/3081/3081015.png">
+                                </span>
+                                <div class="payment-info">
+                                    <p>Cash on Delivery</p>
+                                </div>
+                            </div>
+                    </div>
+                    <div class="delivery-edit-payment-method">
+                        <a href="" id="align-edit-payment-method-label">
+                            Edit Payment Method
+                        </a>
+                    </div>
+                </div>
+                <!-- Order summary -->
+                <div class="order-summary-container">
+                    <span id="order-summary-label">
+                        Order Summary
+                    </span>
+                    <!-- [reusable code] Product name and price-->
+                    <div class="order-summary-product-list">
+                        <div class="cart-summary-item-name">
+                            [product in cart goes here] [quantity (ex. x1)]
+                        </div>
+                        <div class="cart-summary-item-price">
+                            [price]
+                        </div>
+                    </div>
+                    <!-- [Duplicate - reusable code] Product name and price-->
+                    <div class="order-summary-product-list">
+                        <div class="cart-summary-item-name">
+                            [product in cart goes here] [quantity (ex. x1)]
+                        </div>
+                        <div class="cart-summary-item-price">
+                            [price]
+                        </div>
+                    </div>
+                    <!-- Total, subtotal, and deliver fees -->
+                    <div class="subtotal-fee-container">
+                    <div class="fee-label-container">
+                        <span id="subtotal-and-otherfees-label">
+                            Total Fee:
+                        </span>
+                        <span id="subtotal-and-otherfees-label">
+                            Delivery Fee:
+                        </span>
+                        <span id="total-amount-label">
+                            Total Amount:
+                        </span>
+                    </div>
+                    <div class="fee-prices-container">
+                        [subtotal price]
+                        <br>[delivery price]
+                        <br><br>[total price]
+                    </div>
+                    </div>
+                </div>
+                <!-- Place order button -->
+                <button class="cart-order-button">
+                    Place Order
+                </button>
+            </div>
+            </div>
+         </div>
+    </div>
+    <script src="viewcart.js"></script>
+</body>
+</html>
