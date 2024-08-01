@@ -37,217 +37,123 @@
             </a>
         </div>
         <!-- NAVBAR END -->
-         <!-- parent container taken from HOME -->
-         <div class="right-home-container">
+        <div class="right-home-container">
             <!-- toolbar section taken from HOME -->
             <div class="right-home-header">
                 <div class="right-home-header-label">
-                    <!-- i kept this, despite not containing anything, so the toolbar would stay on the top right -->
+                    <!-- Keeps the toolbar on the top right -->
                 </div>
                 <div class="right-home-header-toolbar">
                     <span class="toolbar-container">
-                        <span class="material-symbols-outlined toolbar-icon">
-                            notifications
-                            </span>
+                        <span class="material-symbols-outlined toolbar-icon">notifications</span>
                     </span>
                     <span class="toolbar-container">
-                        <span class="material-symbols-outlined toolbar-icon">
-                            shopping_cart
-                            </span>
+                        <span class="material-symbols-outlined toolbar-icon">shopping_cart</span>
                     </span>
                     <span class="toolbar-container">
-                        <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e">
+                        <img src="{{userProfileImage}}" alt="Profile Image">
                     </span>
                 </div>
             </div>
             <!-- Cart label and item counter -->
             <div class="your-cart-label-container">
-                <span id="your-cart-label">
-                    Your Cart
-                </span>
-                <span id="cart-items-counter">
-                    2
-                </span>
+                <span id="your-cart-label">Your Cart</span>
+                <span id="cart-items-counter">{{cartItemsCount}}</span>
             </div>
             <!-- Cart products -->
             <div class="cart-items-container">
-                <!-- [reusable code] Item in cart -->
+                {{#each cartItems}}
                 <div class="cart-items-selector">
                     <div class="cart-items-image">
-                        <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
+                        <img src="{{this.imageUrl}}" alt="{{this.productName}}">
                     </div>
                     <div class="cart-items-details">
-                        <span class="cart-items-productname">
-                            [Product name here]
-                        </span>
-                        <span>
-                            [store address goes here]
-                        </span>
-                        <span>
-                            84.00
-                        </span>
-                        <span class="cart-items-productdesc">
-                            hi this is a sample product description
-                        </span>
+                        <span class="cart-items-productname">{{this.productName}}</span>
+                        <span>{{this.storeAddress}}</span>
+                        <span>{{this.price}}</span>
+                        <span class="cart-items-productdesc">{{this.description}}</span>
                     </div>
                     <div class="cart-items-quantity-container">
-                        <div class="cart-items-totalprice">
-                            Total: 84.00
-                        </div>
+                        <div class="cart-items-totalprice">Total: {{this.totalPrice}}</div>
                         <div class="cart-items-quantity">
-                            <button class="cart-quantity-button-style" id="decrease-button">-</button>
-                            <input type="text" id="product-quantity" name="product-quantity" class="quantity-field-style" value="">
-                            <button class="cart-quantity-button-style" id="increase-button">+</button>
+                            <button class="cart-quantity-button-style" id="decrease-button-{{@index}}">-</button>
+                            <input type="text" id="product-quantity-{{@index}}" name="product-quantity" class="quantity-field-style" value="{{this.quantity}}">
+                            <button class="cart-quantity-button-style" id="increase-button-{{@index}}">+</button>
                         </div>
-                        <div class="cart-remove-item">
-                            Remove
-                        </div>
+                        <div class="cart-remove-item" data-index="{{@index}}">Remove</div>
                     </div>
                 </div>
-                <!-- [duplicate - reusable code] Item in cart -->
-                <div class="cart-items-selector">
-                    <div class="cart-items-image">
-                        <img src="https://assets1.phonebooky.com/listings/assets/000/055/193/original/414997205_330683096594989_355595492515345980_n.jpg">
-                    </div>
-                    <div class="cart-items-details">
-                        <span class="cart-items-productname">
-                            [Product name here]
-                        </span>
-                        <span>
-                            [store address goes here]
-                        </span>
-                        <span>
-                            84.00
-                        </span>
-                        <span class="cart-items-productdesc">
-                            hi this is a sample product description
-                        </span>
-                    </div>
-                    <div class="cart-items-quantity-container">
-                        <div class="cart-items-totalprice">
-                            Total: 84.00
-                        </div>
-                        <div class="cart-items-quantity">
-                            <button class="cart-quantity-button-style" id="decrease-button">-</button>
-                            <input type="text" id="product-quantity" name="product-quantity" class="quantity-field-style" value="">
-                            <button class="cart-quantity-button-style" id="increase-button">+</button>
-                        </div>
-                        <div class="cart-remove-item">
-                            Remove
-                        </div>
-                    </div>
-                </div>
-                <!-- Shipping option    NOTE: only delivery works for now -->
+                {{/each}}
+                <!-- Shipping option -->
                 <div class="delivery-option-container">
-                    <button class="delivery-option-button-style delivery-option-button-active">
-                        Delivery
-                    </button>
-                    <button class="delivery-option-button-style">
-                        Pickup
-                    </button>
+                    <button class="delivery-option-button-style {{#if deliveryActive}}delivery-option-button-active{{/if}}">Delivery</button>
+                    <button class="delivery-option-button-style {{#unless deliveryActive}}delivery-option-button-active{{/unless}}">Pickup</button>
                 </div>
                 <!-- Delivery Address details -->
                 <div class="delivery-address-container">
-                <div class="deliver-current-set-address">
-                    <span class="material-symbols-outlined" id="deliver-location-icon-style">
-                        location_on
-                    </span>
-                    <span>
-                        [address goes here]
-                    </span>
-                </div>
-                <div class="deliver-edit-set-address">
-                    <a href="">Edit Address</a>
-                </div>
+                    <div class="deliver-current-set-address">
+                        <span class="material-symbols-outlined" id="deliver-location-icon-style">location_on</span>
+                        <span>{{deliveryAddress}}</span>
+                    </div>
+                    <div class="deliver-edit-set-address">
+                        <a href="{{editAddressUrl}}">Edit Address</a>
+                    </div>
                 </div>
                 <!-- Payment Method -->
                 <div class="cart-payment-details">
-                    <span id="cart-payment-method-label">
-                        Payment Method
-                    </span>
+                    <span id="cart-payment-method-label">Payment Method</span>
                     <div class="cart-available-payment-method">
-                        <!-- this section was borrowed from payment methods of SETTINGS -->
-                            <!-- [reusable code] payment method options -->
-                            <div class="payment-card cart-payment-selector">
-                                <span class="payment-logo visa"></span>
-                                <div class="payment-info">
-                                    <p>Visa ... 6789</p>
-                                    <p>Expires 06/30</p>
-                                </div>
+                        {{#each paymentMethods}}
+                        <div class="payment-card cart-payment-selector">
+                            <span class="payment-logo {{this.logoClass}}"></span>
+                            <div class="payment-info">
+                                <p>{{this.cardInfo}}</p>
+                                <p>Expires {{this.expiryDate}}</p>
                             </div>
-                            <div class="payment-card cart-payment-selector">
-                                <span class="payment-logo maya"></span>
-                                <div class="payment-info">
-                                    <p>Maya ... 6789</p>
-                                    <p>Expires 07/28</p>
-                                </div>
+                        </div>
+                        {{/each}}
+                        {{#if cashOnDelivery}}
+                        <div class="payment-card cart-payment-selector">
+                            <span class="cod-icon-container">
+                                <img src="https://cdn-icons-png.freepik.com/512/3081/3081015.png" alt="Cash on Delivery">
+                            </span>
+                            <div class="payment-info">
+                                <p>Cash on Delivery</p>
                             </div>
-                            <div class="payment-card cart-payment-selector">
-                                <span class="cod-icon-container">
-                                    <img src="https://cdn-icons-png.freepik.com/512/3081/3081015.png">
-                                </span>
-                                <div class="payment-info">
-                                    <p>Cash on Delivery</p>
-                                </div>
-                            </div>
+                        </div>
+                        {{/if}}
                     </div>
                     <div class="delivery-edit-payment-method">
-                        <a href="" id="align-edit-payment-method-label">
-                            Edit Payment Method
-                        </a>
+                        <a href="{{editPaymentMethodUrl}}" id="align-edit-payment-method-label">Edit Payment Method</a>
                     </div>
                 </div>
                 <!-- Order summary -->
                 <div class="order-summary-container">
-                    <span id="order-summary-label">
-                        Order Summary
-                    </span>
-                    <!-- [reusable code] Product name and price-->
+                    <span id="order-summary-label">Order Summary</span>
+                    {{#each orderSummary}}
                     <div class="order-summary-product-list">
-                        <div class="cart-summary-item-name">
-                            [product in cart goes here] [quantity (ex. x1)]
-                        </div>
-                        <div class="cart-summary-item-price">
-                            [price]
-                        </div>
+                        <div class="cart-summary-item-name">{{this.productName}} {{this.quantity}}</div>
+                        <div class="cart-summary-item-price">{{this.price}}</div>
                     </div>
-                    <!-- [Duplicate - reusable code] Product name and price-->
-                    <div class="order-summary-product-list">
-                        <div class="cart-summary-item-name">
-                            [product in cart goes here] [quantity (ex. x1)]
-                        </div>
-                        <div class="cart-summary-item-price">
-                            [price]
-                        </div>
-                    </div>
-                    <!-- Total, subtotal, and deliver fees -->
+                    {{/each}}
                     <div class="subtotal-fee-container">
-                    <div class="fee-label-container">
-                        <span id="subtotal-and-otherfees-label">
-                            Total Fee:
-                        </span>
-                        <span id="subtotal-and-otherfees-label">
-                            Delivery Fee:
-                        </span>
-                        <span id="total-amount-label">
-                            Total Amount:
-                        </span>
-                    </div>
-                    <div class="fee-prices-container">
-                        [subtotal price]
-                        <br>[delivery price]
-                        <br><br>[total price]
-                    </div>
+                        <div class="fee-label-container">
+                            <span id="subtotal-and-otherfees-label">Total Fee:</span>
+                            <span id="subtotal-and-otherfees-label">Delivery Fee:</span>
+                            <span id="total-amount-label">Total Amount:</span>
+                        </div>
+                        <div class="fee-prices-container">
+                            {{subtotalPrice}}<br>
+                            {{deliveryPrice}}<br><br>
+                            {{totalPrice}}
+                        </div>
                     </div>
                 </div>
                 <!-- Place order button -->
-                <button class="cart-order-button">
-                    Place Order
-                </button>
+                <button class="cart-order-button">Place Order</button>
             </div>
-            </div>
-         </div>
+        </div>
     </div>
-    <script src="viewcart.js"></script>
+    <script src="/public/js/viewcart.js"></script>
 </body>
 </html>

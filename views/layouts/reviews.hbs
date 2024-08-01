@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cart</title>
+    <title>Reviews</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="/public/css/style.css">
 </head>
@@ -15,106 +15,93 @@
         <!-- NAVBAR START -->
         <div class="left-home-container">
             <h1 id="navbar-logo">Very Munch</h1>
-            <a href="home.html" class="navbar-option-container">
+            <a href="/home" class="navbar-option-container">
                 <span class="material-symbols-outlined">home</span>
                 Home
             </a>
-            <a href="order-history.html" class="navbar-option-container">
+            <a href="/order-history" class="navbar-option-container">
                 <span class="material-symbols-outlined">list_alt</span>
                 Order History
             </a>
-            <a href="reviews.html" class="navbar-option-container">
+            <a href="/reviews" class="navbar-option-container">
                 <span class="material-symbols-outlined">reviews</span>
                 Reviews
             </a>
-            <a href="help.html" class="navbar-option-container">
+            <a href="/help" class="navbar-option-container">
                 <span class="material-symbols-outlined">help</span>
                 Help
             </a>
-            <a href="settings.html" class="navbar-option-container">
+            <a href="/settings" class="navbar-option-container">
                 <span class="material-symbols-outlined">settings</span>
                 Settings
             </a>
         </div>
         <!-- NAVBAR END -->
-         <!-- parent container taken from HOME -->
-         <div class="right-home-container">
-            <!-- toolbar section taken from HOME -->
+        
+        <!-- MAIN CONTENT START -->
+        <div class="right-home-container">
+            <!-- TOOLBAR SECTION -->
             <div class="right-home-header">
                 <div class="right-home-header-label">
-                    <!-- i kept this, despite not containing anything, so the toolbar would stay on the top right -->
+                    <!-- Empty label to keep toolbar on top right -->
                 </div>
                 <div class="right-home-header-toolbar">
                     <span class="toolbar-container">
                         <span class="material-symbols-outlined toolbar-icon">
                             notifications
-                            </span>
+                        </span>
                     </span>
                     <span class="toolbar-container">
                         <span class="material-symbols-outlined toolbar-icon">
                             shopping_cart
-                            </span>
+                        </span>
                     </span>
                     <span class="toolbar-container">
-                        <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e">
+                        <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e" alt="Profile Image">
                     </span>
                 </div>
             </div>
+            
             <div class="breadcrumb-container">
-                <a href="home.html">Home</a> > <a href="selectedresto.html">Selected Resto Name</a> > Reviews
+                <a href="/home">Home</a> > <a href="/selectedresto">Selected Resto Name</a> > Reviews
             </div>
+            
             <div class="reviews-and-ratings-label">
                 Reviews and Ratings
             </div>
+            
             <div class="total-reviews-container">
-                <span id="average-review-style">4.3</span>
+                <span id="average-review-style">{{averageRating}}</span>
                 <span class="material-symbols-outlined" id="reviews-and-rating-star">
                     star
                 </span>
-                <span id="total-review-style">15 reviews</span>
+                <span id="total-review-style">{{totalReviews}} reviews</span>
             </div>
+            
             <div class="review-counts-container">
+                {{#each ratingCounts}}
                 <div class="rating-status-container">
-                    <span id="rating-number-style">5</span>
-                    <progress id="rating-bar-style" value="78" max="100"></progress>
+                    <span id="rating-number-style">{{@key}}</span>
+                    <progress id="rating-bar-style" value="{{this}}" max="100"></progress>
                 </div>
-                <div class="rating-status-container">
-                    <span id="rating-number-style">4</span>
-                    <progress id="rating-bar-style" value="56" max="100"></progress>
-                </div>
-                <div class="rating-status-container">
-                    <span id="rating-number-style">3</span>
-                    <progress id="rating-bar-style" value="15" max="100"></progress>
-                </div>
-                <div class="rating-status-container">
-                    <span id="rating-number-style">2</span>
-                    <progress id="rating-bar-style" value="5" max="100"></progress>
-                </div>
-                <div class="rating-status-container">
-                    <span id="rating-number-style">1</span>
-                    <progress id="rating-bar-style" value="10" max="100"></progress>
-                </div>
+                {{/each}}
             </div>
+            
+            {{#each reviews}}
             <div class="review-container">
-                <span class="review-buyer-name">
-                    [buyer name here]
-                </span>
+                <span class="review-buyer-name">{{this.buyerName}}</span>
                 <span class="review-rating-here">
                     <div class="buyer-stars-container">
                         <span class="material-symbols-outlined" id="buyer-stars-style">
                             star
                         </span>
                         <span class="buyer-rating-number">
-                            4/5
+                            {{this.rating}}/5
                         </span>
                     </div>
                 </span>
-                <span class="buyer-review">
-                    hi this is a sample buyer review
-                </span>
-                <span class="buyer-rated-order">
-                    hi this is a sample buyer's order that's being rated
-                </span>
+                <span class="buyer-review">{{this.reviewText}}</span>
+                <span class="buyer-rated-order">{{this.orderText}}</span>
                 <span class="buyer-review-thumbs-up">
                     <span class="material-symbols-outlined" id="thumbs-up">
                         thumb_up
@@ -124,9 +111,10 @@
                     </span>
                 </span>
             </div>
-         </div>
-
+            {{/each}}
+        </div>
+        <!-- MAIN CONTENT END -->
     </div>
-    <script src="reviews.js"></script>
+    <script src="../reviews.js"></script>
 </body>
 </html>

@@ -1,4 +1,4 @@
-//makes the selected payment method's container orange when clicked
+// Makes the selected payment method's container orange when clicked
 document.addEventListener('DOMContentLoaded', () => {
     const paymentCards = document.querySelectorAll('.cart-payment-selector');
 
@@ -8,12 +8,12 @@ document.addEventListener('DOMContentLoaded', () => {
             paymentCards.forEach(c => c.classList.remove('selected'));
             
             // Toggle 'selected' class on the clicked card
-            card.classList.toggle('selected');
+            card.classList.add('selected');
         });
     });
 });
 
-//removes the item in cart when "remove" button is pressed
+// Removes the item in cart when "remove" button is pressed
 document.addEventListener('DOMContentLoaded', () => {
     // Select all "Remove" buttons
     const removeButtons = document.querySelectorAll('.cart-remove-item');
@@ -26,6 +26,12 @@ document.addEventListener('DOMContentLoaded', () => {
             // Remove the container from the DOM
             if (container) {
                 container.remove();
+                
+                // Update cart item counter
+                const cartItemsCounter = document.getElementById('cart-items-counter');
+                if (cartItemsCounter) {
+                    cartItemsCounter.textContent = document.querySelectorAll('.cart-items-selector').length;
+                }
             }
         });
     });

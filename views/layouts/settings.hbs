@@ -54,7 +54,7 @@
                     <span class="material-symbols-outlined toolbar-icon">shopping_cart</span>
                 </span>
                 <span class="toolbar-container">
-                    <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e" alt="Profile Image">
+                    <img src="{{profileImage}}" alt="Profile Image">
                 </span>
             </div>
         </div>
@@ -68,11 +68,11 @@
                 <div class="details__name">
                     <div class="name__first">
                         <h3 class="first__label">First Name</h3>
-                        <input name="First Name Input" placeholder="Enter first name" type="text" class="textfield-register" value="Thea Verah" />
+                        <input name="First Name Input" placeholder="Enter first name" type="text" class="textfield-register" value="{{firstName}}" />
                     </div>
                     <div class="name__last">
                         <h3 class="last__label">Last Name</h3>
-                        <input name="Last Name Input" placeholder="Enter last name" type="text" class="textfield-register" value="Sumagang" />
+                        <input name="Last Name Input" placeholder="Enter last name" type="text" class="textfield-register" value="{{lastName}}" />
                     </div>
                 </div>
                 <h3 class="details__password-label">Password</h3>
@@ -85,36 +85,28 @@
 
                 <h3 class="details__email-label">Email</h3>
                 <div class="details__email">
-                    <input name="Email Input" placeholder="Enter email" type="email" class="textfield-register" value="thea_sumagang@dlsu.edu.ph" />
+                    <input name="Email Input" placeholder="Enter email" type="email" class="textfield-register" value="{{email}}" />
                 </div>
                 <h3 class="details__phone-label">Phone</h3>
                 <div class="details__phone">
-                    <input name="Phone Input" placeholder="Enter phone number" type="text" class="textfield-register" value="+63 912 345 6789" />
+                    <input name="Phone Input" placeholder="Enter phone number" type="text" class="textfield-register" value="{{phone}}" />
                 </div>
                 <h3 class="details__location-label">Location</h3>
                 <div class="details__location">
-                    <input name="Location Input" placeholder="Enter location" type="text" class="textfield-register" value="Pasay City" />
+                    <input name="Location Input" placeholder="Enter location" type="text" class="textfield-register" value="{{location}}" />
                 </div>
                 <h3 class="details__payment-label">Payment Method</h3>
                 <div class="details__payment">
-                    <div class="payment-method">
+                    {{#each paymentMethods}}
                         <div class="payment-card">
-                            <span class="payment-logo visa"></span>
+                            <span class="payment-logo {{logo}}"></span>
                             <div class="payment-info">
-                                <p>Visa ... 6789</p>
-                                <p>Expires 06/30</p>
+                                <p>{{info}}</p>
+                                <p>Expires {{expiry}}</p>
                             </div>
                             <button class="remove-button">REMOVE</button>
                         </div>
-                        <div class="payment-card">
-                            <span class="payment-logo maya"></span>
-                            <div class="payment-info">
-                                <p>Maya ... 6789</p>
-                                <p>Expires 07/28</p>
-                            </div>
-                            <button class="remove-button">REMOVE</button>
-                        </div>
-                    </div>
+                    {{/each}}
                     <button class="add-payment-button">ADD PAYMENT METHOD</button>
                 </div>
             </div>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+<body>
+    <div class="parentcontainer">
+        <div class="left-register-container">
+            <h1>Begin your Very Munch experience today!</h1>
+            <div class="left-register-subcontainer">
+                <form action="/register" method="POST">
+                    <label for="firstname" class="textfield-label-register">First Name</label>
+                    <input type="text" id="firstname" name="firstname" class="textfield-signup">
+                    <label for="email" class="textfield-label-register">Email</label>
+                    <input type="text" id="email" name="email" class="textfield-signup">
+                    <label for="password" class="textfield-label-register">Password</label>
+                    <input type="password" id="password" name="password" class="textfield-signup">
+                    <label for="repeatpassword" class="textfield-label-register">Repeat Password</label>
+                    <input type="password" id="repeatpassword" name="repeatpassword" class="textfield-signup">
+                    <label for="surname" class="textfield-label-register">Surname</label>
+                    <input type="text" id="surname" name="surname" class="textfield-signup">
+                    <label for="phone" class="textfield-label-register">Phone</label>
+                    <input type="text" id="phone" name="phone" placeholder="+63" class="textfield-signup">
+                    <div class="buttoncontainer">
+                        <button type="submit" id="button-register">Create Account</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="right-register-container">
+        </div>
+    </div>
+</body>
+</html>

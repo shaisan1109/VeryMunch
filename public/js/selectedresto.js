@@ -1,5 +1,10 @@
 // For opening and closing the pop up window when adding an item to cart
-function showPopup() {
+function showPopup(name, image, price, description) {
+    document.getElementById('popup-product-name-style').textContent = name;
+    document.getElementById('popup-product-image').src = image;
+    document.getElementById('popup-product-price').textContent = price;
+    document.getElementById('popup-product-description').textContent = description;
+
     document.getElementById('popup-overlay').style.display = 'block';
     document.getElementById('popup-window').style.display = 'block';
 }

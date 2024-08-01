@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link rel="stylesheet" href="/public/css/style.css">
+</head>
+
+<body>
+<div class="parentcontainer">
+    <!-- NAVBAR START -->
+    <div class="left-home-container">
+        <h1 id="navbar-logo">Very Munch</h1>
+        <a href="home.html" class="navbar-selected-container">
+            <span class="material-symbols-outlined">home</span>
+            Home
+        </a>
+        <a href="order-history.html" class="navbar-option-container">
+            <span class="material-symbols-outlined">list_alt</span>
+            Order History
+        </a>
+        <a href="reviews.html" class="navbar-option-container">
+            <span class="material-symbols-outlined">reviews</span>
+            Reviews
+        </a>
+        <a href="help.html" class="navbar-option-container">
+            <span class="material-symbols-outlined">help</span>
+            Help
+        </a>
+        <a href="settings.html" class="navbar-option-container">
+            <span class="material-symbols-outlined">settings</span>
+            Settings
+        </a>
+    </div>
+    <!-- NAVBAR END -->
+    <div class="right-home-container">
+        <div class="right-home-header">
+            <div class="right-home-header-label">
+                Good Morning, {{userName}}
+            </div>
+            <div class="right-home-header-toolbar">
+                <span class="toolbar-container">
+                    <span class="material-symbols-outlined toolbar-icon">notifications</span>
+                </span>
+                <span class="toolbar-container">
+                    <span class="material-symbols-outlined toolbar-icon">shopping_cart</span>
+                </span>
+                <span class="toolbar-container">
+                    <img src="{{userProfileImage}}" alt="Profile Image">
+                </span>
+            </div>
+        </div>
+        <div class="right-home-searchbar">
+            <div class="search-location">
+                <span class="material-symbols-outlined">location_on</span>
+                <select id="location" name="location" class="locationdropdown">
+                    {{#each locations}}
+                        <option value="{{this}}">{{this}}</option>
+                    {{/each}}
+                </select>
+            </div>
+            <div class="search-divider"></div>
+            <div class="search-input">
+                <span class="material-symbols-outlined">search</span>
+                <label for="search"></label><input type="text" id="search" name="search" class="searchinput" placeholder="What do you want to eat today?">
+            </div>
+        </div>
+
+        <div class="right-home-plainlabel">
+            Categories
+        </div>
+        <div class="right-home-categories-container">
+            {{#each categories}}
+                <div class="category-selector">
+                    <span class="category-image">
+                        <img src="{{this.image}}" alt="Category Image">
+                    </span>
+                    <span class="category-name">
+                        {{this.name}}
+                    </span>
+                </div>
+            {{/each}}
+        </div>
+        <div class="right-home-plainlabel">
+            Special Deals Today: Up to 50% off!
+        </div>
+        <div class="right-home-restaurants-container">
+            {{#each restaurants}}
+                <div class="restaurant-selector">
+                    <span class="restaurant-photo">
+                        <img src="{{this.photo}}" alt="Restaurant Photo">
+                    </span>
+                    <span class="restaurant-alerts">
+                        <span class="material-symbols-outlined alert-icons">sell</span>
+                        {{this.discount}}% off
+                    </span>
+                    <span class="restaurant-closing">
+                        <span class="material-symbols-outlined alert-icons">timer</span>
+                        Closing in {{this.closingTime}}
+                    </span>
+                    <span class="restaurant-details">
+                        <span class="restaurant-name">
+                            {{this.name}}
+                        </span>
+                        <span class="restaurant-description">
+                            {{this.description}}
+                            <br>{{this.distance}}km ({{this.reviewRate}} review rate)
+                        </br>
+                        </span>
+                    </span>
+                </div>
+            {{/each}}
+        </div>
+    </div>
+</div>
+</body>
+
+</html>
