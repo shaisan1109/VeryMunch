@@ -59,7 +59,7 @@ body {
     font-weight: 600;
     width: 200px; 
     height: 80px;  
-    margin-top: 6em;
+    margin-top: 4em;
     margin-bottom: -1em;
     border-radius: 50px; 
     background-color: transparent;
@@ -114,19 +114,22 @@ body {
 
 #right-signin-subcontainer {
     height: 7%;
-    width: 53%;
+    width: 60%;
     margin: 1.5em;
 }
 
 #rsi-rememberme {
     height: 90%;
-    width: 50%;
+    width: 50%; /* Ensure this width is what you need */
     display: flex;
     align-items: center;
+    justify-content: center; /* Center content within the button */
     color: #396C03;
     font-weight: 600;
     font-size: large;
+    margin: 0 auto; /* Center horizontally if width is set correctly */
 }
+
 
 .rsi-checkbox-rememberme {
     height: 100%;
@@ -138,8 +141,8 @@ body {
     color: #ffffff;
     font-size: x-large;
     font-weight: 600;
-    width: auto; 
-    padding: 1em 2em; 
+    width: auto;
+    padding: 1em 2em;
     border-radius: 8em;
     background-color: #396C03;
     border: 2px solid #ffffff;
@@ -149,8 +152,10 @@ body {
     align-items: center;
     justify-content: center;
     text-align: center;
-    white-space: nowrap; 
+    white-space: nowrap;
+    margin: 3em auto 0; /* Center horizontally */
 }
+
 
 #button-signin:hover {
     background-color: #264802;

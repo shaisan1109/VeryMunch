@@ -21,7 +21,7 @@ const app = express();
 
 // Initialize bodyparser
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({ extended: true }));
 app.use(cors());
 
 // Initialize session
@@ -123,21 +123,24 @@ app.post('/register', async (req, res) => {
     }
 });
 
-// Login POST route
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
+    console.log('Login attempt:', { email, password }); // Debugging line
     try {
         const user = await User.findOne({ 'login.email': email });
         if (!user) {
+            console.log('User not found'); // Debugging line
             return res.status(401).send('Invalid email or password');
         }
         const validPassword = await bcrypt.compare(password, user.login.password);
         if (!validPassword) {
+            console.log('Invalid password'); // Debugging line
             return res.status(401).send('Invalid email or password');
         }
         req.session.userId = user._id;
         res.redirect('/home');
     } catch (err) {
+        console.error('Login error:', err); // Debugging line
         res.status(500).send('Internal server error');
     }
 });
