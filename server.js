@@ -105,45 +105,56 @@ app.get('/viewcart', (req, res) => {
 
 /* -------- AUTHENTICATION ROUTES -------- */
 
-// Registration POST route
 app.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password, phone} = req.body;
+    const { firstName, lastName, email, password, repeatpassword, phone } = req.body;
+
+    if (password !== repeatpassword) {
+        return res.status(400).send('Passwords do not match');
+    }
+
     try {
-        const hashedPassword = await bcrypt.hash(password, 10);
+        // Ensure the password is provided and not empty
+        if (!password) {
+            return res.status(400).send('Password is required');
+        }
+
         const newUser = new User({
             firstName,
             lastName,
-            login: { email, password: hashedPassword },
+            login: { email, password }, // Store password as plain text
             phone
         });
         await newUser.save();
         res.redirect('/login');
     } catch (err) {
+        console.error('Registration error:', err);
         res.status(500).send('Internal server error');
     }
 });
 
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
-    console.log('Login attempt:', { email, password }); // Debugging line
     try {
         const user = await User.findOne({ 'login.email': email });
         if (!user) {
-            console.log('User not found'); // Debugging line
             return res.status(401).send('Invalid email or password');
         }
-        const validPassword = await bcrypt.compare(password, user.login.password);
-        if (!validPassword) {
-            console.log('Invalid password'); // Debugging line
+
+        // Compare the provided password with the stored password
+        if (password !== user.login.password) {
             return res.status(401).send('Invalid email or password');
         }
+
         req.session.userId = user._id;
         res.redirect('/home');
     } catch (err) {
-        console.error('Login error:', err); // Debugging line
+        console.error('Login error:', err);
         res.status(500).send('Internal server error');
     }
 });
+
+
 
 // Logout route
 app.post('/logout', (req, res) => {

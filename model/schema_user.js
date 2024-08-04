@@ -1,8 +1,6 @@
 import mongoose from 'mongoose';
 
-const { Schema, model } = mongoose;
-
-const userSchema = new Schema({
+const userSchema = new mongoose.Schema({
     firstName: {
         type: String,
         required: true
@@ -15,22 +13,18 @@ const userSchema = new Schema({
         email: {
             type: String,
             required: true,
-            unique: true, // Ensures that each email is unique in the database
-            lowercase: true // Optionally convert email to lowercase for consistency
+            unique: true
         },
         password: {
             type: String,
-            required: true,
-            minlength: 8 // Ensure password has at least 8 characters
+            required: true // Store password in plain text
         }
     },
     phone: {
         type: String,
-        default: '' // Make phone optional
-    },
-
+        required: false // Adjust if needed
+    }
 });
 
-const User = model('User', userSchema, 'users');
-
+const User = mongoose.model('User', userSchema);
 export default User;

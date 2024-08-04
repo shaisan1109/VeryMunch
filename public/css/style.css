@@ -177,31 +177,40 @@ body {
 .left-register-subcontainer {
     display: flex;
     flex-direction: column;
-    flex-wrap: wrap;
-    height: 60%; 
-    width: 100%; 
-    box-sizing: border-box; 
-    padding: 20px; 
+    align-items: flex-start; 
+    width: 100%;
+    max-width: 600px; 
+    margin: 0 auto; 
+    box-sizing: border-box;
+    padding: 20px;
 }
 
 .textfield-signup {
-    font-family: "Poppins", sans-serif;
-    height: 4%;
-    width: 40%;
-    border-radius: 8px;
-    border: 2px solid #ccc;
-    font-size: large;
-    padding: 0.5em;
-    outline-color: #FF8B00;
+    font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+    font-weight: 400;
+    font-size: larger;
+    margin-bottom: 5px; 
+    display: flex;
+    flex-direction: column;
+    width: 100%; 
+    max-width: 300px; 
+    margin: 10px 0; 
+    margin-left: 60px;
+    box-sizing: border-box; 
+    border: 2px solid #ccc; /* Add a border */
+    border-radius: 50px; /* Rounded corners */
 }
 
 .textfield-label-register {
     font-weight: 600;
-    font-size: larger;
-    margin-top: 3%;
+    font-size: x-large;
+    margin-bottom: 5px; /* Space between label and field */
+    text-align: left; /* Ensure label text aligns left */
 }
 
-.buttoncontainer {
+
+
+.buttoncontainer-register {
     height: 15%;
     width: 100px; /* Added px unit */
     display: flex-end;
@@ -234,7 +243,7 @@ button:hover {
     font-weight: 600;
     width: 25%;
     height: 90%;
-    margin: 2em;
+    margin: 3em;
     border-radius: 8em;
     background-color: #396C03;
     border: 2px solid #396C03;
