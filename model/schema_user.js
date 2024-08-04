@@ -28,24 +28,7 @@ const userSchema = new Schema({
         type: String,
         default: '' // Make phone optional
     },
-    location: {
-        street: {
-            type: String,
-            default: '' // Make street optional
-        },
-        city: {
-            type: String,
-            default: '' // Make city optional
-        },
-        region: {
-            type: String,
-            default: '' // Make region optional
-        },
-        province: {
-            type: String,
-            default: '' // Make province optional
-        }
-    }
+
 });
 
 const User = model('User', userSchema, 'users');

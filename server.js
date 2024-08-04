@@ -107,15 +107,14 @@ app.get('/viewcart', (req, res) => {
 
 // Registration POST route
 app.post('/register', async (req, res) => {
-    const { firstName, lastName, email, password, phone, street, city, region, province } = req.body;
+    const { firstName, lastName, email, password, phone} = req.body;
     try {
         const hashedPassword = await bcrypt.hash(password, 10);
         const newUser = new User({
             firstName,
             lastName,
             login: { email, password: hashedPassword },
-            phone,
-            location: { street, city, region, province }
+            phone
         });
         await newUser.save();
         res.redirect('/login');
