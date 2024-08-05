@@ -12,9 +12,9 @@ export const getAllRestos = async () => {
 }
 
 // Get specific restaurant with name
-export const getRestoByName = async () => {
-    const resto = await Restaurant.findOne().lean();
+export const getRestoById = async (id) => {
+    const resto = await Restaurant.findById(id).lean();
     return resto;
 }
 
-export default { getAllRestos, getRestoByName };
+export default { getAllRestos, getRestoById };

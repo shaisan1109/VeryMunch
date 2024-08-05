@@ -575,6 +575,10 @@ button:hover {
     font-weight: bold;
 }
 
+.restaurant-link {
+    text-decoration: none;
+}
+
 .restaurant-description {
     color: #878787;
     font-size: medium;

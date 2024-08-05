@@ -11,7 +11,7 @@ import { fileURLToPath } from 'url'; // Import fileURLToPath
 import { dirname, join } from 'path'; // Import dirname and join
 
 // DB functions
-import { getAllRestos, getRestoByName } from './model/controller_restaurant.js';
+import { getAllRestos, getRestoById } from './model/controller_restaurant.js';
 import { getAllCategories } from './model/controller_category.js'
 
 // Determine the current directory name using import.meta.url
@@ -102,8 +102,17 @@ app.get('/reviews', (req, res) => {
     res.render('reviews', { title: 'Reviews' });
 });
 
-app.get('/selectedresto', (req, res) => {
-    res.render('selectedresto', { title: 'Selected Restaurant' });
+app.get('/restaurant/:id', async (req, res) => {
+    const resto = await getRestoById(req.params.id);
+
+    res.render('selectedresto', {
+        title: 'Selected Restaurant',
+        restoName: resto.name,
+        restoImage: resto.banner,
+        address: resto.address,
+        timeOpen: resto.operatingHours.startTime,
+        timeClose: resto.operatingHours.endTime
+    });
 });
 
 app.get('/settings', (req, res) => {
