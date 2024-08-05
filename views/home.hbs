@@ -94,7 +94,7 @@
             {{#each restaurants}}
                 <div class="restaurant-selector">
                     <span class="restaurant-photo">
-                        <img src="{{this.photo}}" alt="Restaurant Photo">
+                        <img src="{{this.thumbnail}}" alt="Restaurant Photo">
                     </span>
                     <span class="restaurant-alerts">
                         <span class="material-symbols-outlined alert-icons">sell</span>
@@ -102,14 +102,14 @@
                     </span>
                     <span class="restaurant-closing">
                         <span class="material-symbols-outlined alert-icons">timer</span>
-                        Closing in {{this.operatingHours.endTime}}
+                        Closing in {{this.operatingHours.endTime}}!
                     </span>
                     <span class="restaurant-details">
                         <span class="restaurant-name">
                             {{this.name}}
                         </span>
                         <span class="restaurant-description">
-                            {{this.address}}
+                            {{this.description}}
                             <br>{{this.distance}}km ({{this.rating}} review rate)
                         </br>
                         </span>

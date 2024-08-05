@@ -11,7 +11,8 @@ import { fileURLToPath } from 'url'; // Import fileURLToPath
 import { dirname, join } from 'path'; // Import dirname and join
 
 // DB functions
-import  { getAllRestos, getRestoByName } from './model/controller_restaurant.js';
+import { getAllRestos, getRestoByName } from './model/controller_restaurant.js';
+import { getAllCategories } from './model/controller_category.js'
 
 // Determine the current directory name using import.meta.url
 const __filename = fileURLToPath(import.meta.url);
@@ -76,10 +77,12 @@ app.get('/help', (req, res) => {
 
 app.get('/home', async (req, res) => {
     const restaurants = await getAllRestos();
+    const categories = await getAllCategories();
 
     res.render('home', {
         title: 'Home',
-        restaurants
+        restaurants,
+        categories
     });
 });
 
