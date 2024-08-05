@@ -10,6 +10,9 @@ import User from './model/schema_user.js';
 import { fileURLToPath } from 'url'; // Import fileURLToPath
 import { dirname, join } from 'path'; // Import dirname and join
 
+// DB functions
+import  { getAllRestos, getRestoByName } from './model/controller_restaurant.js';
+
 // Determine the current directory name using import.meta.url
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
@@ -71,8 +74,13 @@ app.get('/help', (req, res) => {
     res.render('help', { title: 'Help' });
 });
 
-app.get('/home', (req, res) => {
-    res.render('home', { title: 'Home' });
+app.get('/home', async (req, res) => {
+    const restaurants = await getAllRestos();
+
+    res.render('home', {
+        title: 'Home',
+        restaurants
+    });
 });
 
 app.get('/login', (req, res) => {
