@@ -11,17 +11,19 @@ import { fileURLToPath } from 'url'; // Import fileURLToPath
 import { dirname, join } from 'path'; // Import dirname and join
 
 // DB functions
-import { getAllRestos, getRestoById, getRestoWithMenu } from './model/controller_restaurant.js';
+import { getAllRestos,
+    getRestoById,
+    getRestoWithMenu,
+    getRestoWithReviews } from './model/controller_restaurant.js';
 import { getAllCategories } from './model/controller_category.js';
-import { getFoodByResto } from './model/controller_menu.js';
+
+// DB Schemas (even though they seem unused, DO NOT DELETE)
+import Menu from './model/schema_menu.js';
+import Review from './model/schema_review.js';
 
 // Determine the current directory name using import.meta.url
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
-
-// ObjectID translator
-//const mongoose = require('mongoose');
-const objectId = new mongoose.Types.ObjectId;
 
 /* -------- INITIALIZATION -------- */
 
@@ -126,6 +128,7 @@ app.get('/reviews', (req, res) => {
     res.render('reviews', { title: 'Reviews' });
 });
 
+// Main restaurant display
 app.get('/restaurant/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
     const menu = await getRestoWithMenu(req.params.id);
@@ -139,9 +142,26 @@ app.get('/restaurant/:id', async (req, res) => {
         address: resto.address,
         timeOpen: resto.operatingHours.startTime,
         timeClose: resto.operatingHours.endTime,
+        id: req.params.id,
 
         // Discounted products
         menu: menu.menu
+    });
+});
+
+// Get reviews for a certain restaurant
+app.get('/reviews/:id', async (req, res) => {
+    const resto = await getRestoById(req.params.id);
+    const reviews = await getRestoWithReviews(req.params.id);
+
+    res.render('reviews', {
+        title: resto.name,
+        id: req.params.id,
+        restoName: resto.name,
+
+        // Reviews
+        reviews: reviews.reviews
+        //totalReviews
     });
 });
 

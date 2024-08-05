@@ -18,4 +18,10 @@ export const getRestoWithMenu = async (id) => {
     return resto;
 }
 
-export default { getAllRestos, getRestoById, getRestoWithMenu };
+// Get specific restaurant with id PLUS reviews
+export const getRestoWithReviews = async (id) => {
+    const resto = await Restaurant.findById(id).populate("reviews").lean();
+    return resto;
+}
+
+export default { getAllRestos, getRestoById, getRestoWithMenu, getRestoWithReviews };

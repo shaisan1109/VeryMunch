@@ -25,6 +25,10 @@ const restoSchema = new Schema({
     menu: [{
         type: mongoose.Schema.Types.ObjectId,
         ref: 'Menu'
+    }],
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
     }]
 });
 

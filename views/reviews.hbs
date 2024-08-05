@@ -63,7 +63,7 @@
             </div>
             
             <div class="breadcrumb-container">
-                <a href="/home">Home</a> > <a href="/selectedresto">Selected Resto Name</a> > Reviews
+                <a href="/home">Home</a> > <a href="/restaurant/{{id}}">{{restoName}}</a> > Reviews
             </div>
             
             <div class="reviews-and-ratings-label">
@@ -100,8 +100,8 @@
                         </span>
                     </div>
                 </span>
-                <span class="buyer-review">{{this.reviewText}}</span>
-                <span class="buyer-rated-order">{{this.orderText}}</span>
+                <span class="buyer-review">{{this.comment}}</span>
+                <span class="buyer-rated-order">Ordered: {{this.ordered}}</span>
                 <span class="buyer-review-thumbs-up">
                     <span class="material-symbols-outlined" id="thumbs-up">
                         thumb_up
