@@ -3,6 +3,10 @@ import mongoose from 'mongoose';
 const { Schema, model } = mongoose;
 
 const menuSchema = new Schema({
+    // restaurantId: {
+    //     type: Schema.Types.ObjectId,
+    //     required: true
+    // },
     name: {
         type: String,
         required: true
