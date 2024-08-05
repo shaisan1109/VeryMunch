@@ -21,7 +21,11 @@ const restoSchema = new Schema({
         endTime: {
             type: String
         }
-    }
+    },
+    menu: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Menu'
+    }]
 });
 
 // Last parameter refers to the table being used in the actual DB
