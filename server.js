@@ -138,11 +138,11 @@ app.post('/login', async (req, res) => {
     try {
         const user = await User.findOne({ 'login.email': email });
         if (!user) {
-            return res.status(401).send('Invalid email or password');
+            return res.status(401).send('User does not exist.');
         }
 
         // Compare the provided password with the stored password
-        if (password !== user.login.password) {
+        else if (password !== user.login.password) {
             return res.status(401).send('Invalid email or password');
         }
 
@@ -180,7 +180,7 @@ app.get('/home', requireLogin, (req, res) => {
 });
 
 /* -------- CONNECT TO MONGODB -------- */
-mongoose.connect('mongodb://localhost:27017/VeryMunch', { useNewUrlParser: true, useUnifiedTopology: true }) 
+mongoose.connect('mongodb+srv://veryMunchAdmin:th4nkuv3rymunch@cluster0.39an52c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true, dbname: 'VeryMunchDB' }) 
     .then(() => {
         console.log('Connected to MongoDB successfully');
     })
