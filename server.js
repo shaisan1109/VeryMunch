@@ -24,13 +24,14 @@ import { addItemToCart, getCartItemWithInfo } from './model/controller_viewcart.
 import { getReviewsByRestaurantId, getAverageRatingAndCounts } from './model/controller_review.js'; 
 import { getAllLocations, getProvinces } from './model/controller_location.js';  // Import location controller
 
-import { getUserWithReviews, getUserWithCart } from './model/controller_user.js';
+import { getUserWithReviews, getUserWithCart, getUserWithOrders } from './model/controller_user.js';
 
 
 
 // DB Schemas (even though they seem unused, DO NOT DELETE)
 import Menu from './model/schema_menu.js';
 import Review from './model/schema_review.js';
+import Order from './model/schema_orders.js';
 
 
 
@@ -143,8 +144,6 @@ app.get('/home', async (req, res) => {
     const categories = await getAllCategories();
     const locations = await getProvinces(req.user.location.region);
 
-    console.log(locations.provinces);
-
     res.render('home', {
         title: 'Home',
         restaurants,
@@ -160,11 +159,17 @@ app.get('/login', (req, res) => {
     res.render('login', { title: 'Login' });
 });
 
-app.get('/order-history', (req, res) => {
+app.get('/order-history/:id', async (req, res) => {
+    const pastOrders = await getUserWithOrders(req.params.id);
+
+    console.log(pastOrders);
+
     res.render('order-history', {
         title: 'Order History',
         userProfileImage: req.user.image,
-        userId: req.user._id
+        userId: req.user._id,
+
+        pastOrders: pastOrders.orders
     });
 });
 
@@ -327,12 +332,6 @@ app.post('/viewcart', addItemToCart);
 
 
 /* -------- PROTECTED ROUTE MIDDLEWARE -------- */
-// function requireLogin(req, res, next) {
-//     if (!req.session.userId) {
-//         return res.redirect('/login');
-//     }
-//     next();
-// }
 
 // Protect routes
 app.get('/home', requireLogin, (req, res) => {

@@ -37,4 +37,17 @@ export const getUserWithCart = async (id) => {
     }
 }
 
-export default { getUser, getUserWithReviews, getUserWithCart };
+// Get user with past orders
+export const getUserWithOrders = async (id) => {
+    try {
+        const user = await User.findById(id)
+            .select("orders -_id")
+            .populate("orders")
+            .lean();
+        return user;
+    } catch {
+        throw new Error('Error fetching user with orders');
+    }
+}
+
+export default { getUser, getUserWithReviews, getUserWithCart, getUserWithOrders };
