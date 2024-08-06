@@ -13,7 +13,7 @@ export const getAllLocations = async () => {
 // Get location with region
 export const getProvinces = async (region) => {
     try {
-        const location = await Location.find({ region }).lean();
+        const location = await Location.findOne({ region }, '-_id provinces').lean();
         return location;
     } catch {
         throw new Error('Error fetching provinces');

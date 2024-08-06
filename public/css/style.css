@@ -1472,15 +1472,18 @@ button:hover {
 }
 
 .addtocartbutton{
-    height: 100%;
-    width: 40%;
-    border-radius: 50%;
-    border-style: none;
-    background-color: #396C03;
-    color: #ffffff;
+    background-color: #396C03; /* Green */
+    border: none;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
     cursor: pointer;
-    font-size: xx-large;
+    border-radius: 50%;
     transition: background-color 0.3s, border-color 0.3s;
+    border-style: none;
 }
 
 .addtocartbutton:hover {
@@ -1860,13 +1863,12 @@ button:hover {
     position: relative;
     top: 0;
     left: 0;
-    width: 100%;
-    height: 100%;
+    width: 175px;
     object-fit: cover;
 }
 
 .cart-items-details{
-    width: 50%;
+    /* width: 50%; */
     padding: 2%;
     display: flex;
     flex-direction: column;

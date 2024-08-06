@@ -143,7 +143,7 @@ app.get('/home', async (req, res) => {
     const categories = await getAllCategories();
     const locations = await getProvinces(req.user.location.region);
 
-    console.log(locations);
+    console.log(locations.provinces);
 
     res.render('home', {
         title: 'Home',
@@ -243,12 +243,10 @@ app.get('/settings', (req, res) => {
 
 app.get('/viewcart/:id', async (req, res) => {
     const userCart = await getUserWithCart(req.params.id);
-    const cart = userCart.cart;
-
-    console.log(userCart.cart);
 
     res.render('viewcart', {
         title: 'View Cart',
+        user: req.user,
         userProfileImage: req.user.image,
         userId: req.user._id,
 

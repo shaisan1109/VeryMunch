@@ -93,7 +93,7 @@
                 <div class="delivery-address-container">
                     <div class="deliver-current-set-address">
                         <span class="material-symbols-outlined" id="deliver-location-icon-style">location_on</span>
-                        <span>{{deliveryAddress}}</span>
+                        <span>{{user.location.street}}, {{user.location.city}}, {{user.location.province}}</span>
                     </div>
                     <div class="deliver-edit-set-address">
                         <a href="{{editAddressUrl}}">Edit Address</a>
