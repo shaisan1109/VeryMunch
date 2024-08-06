@@ -10,20 +10,36 @@ import User from './model/schema_user.js';
 import { fileURLToPath } from 'url'; // Import fileURLToPath
 import { dirname, join } from 'path'; // Import dirname and join
 
-// DB functions
+
+
+// DB functions 
 import { getAllRestos,
     getRestoById,
     getRestoWithMenu,
     getRestoWithReviews } from './model/controller_restaurant.js';
+
 import { getAllCategories } from './model/controller_category.js';
+import { addItemToCart } from './model/controller_viewcart.js';
+import { getReviewsByRestaurantId, getAverageRatingAndCounts } from './model/controller_reviews.js'; 
+import { getAllLocations } from './model/controller_location.js';  // Import location controller
+
+
 
 // DB Schemas (even though they seem unused, DO NOT DELETE)
 import Menu from './model/schema_menu.js';
 import Review from './model/schema_review.js';
 
+
+
 // Determine the current directory name using import.meta.url
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = dirname(__filename);
+
+
+
+
+
+
 
 /* -------- INITIALIZATION -------- */
 
@@ -53,19 +69,32 @@ app.use(session({
     store: store
 }));
 
-// Saving current user?
-app.use((req, res, next) => {
-    if (req.session.authenticated) {
-        req.user = req.session.user;
+// Middleware to save current user
+app.use(async (req, res, next) => {
+    if (req.session.userId) {
+        try {
+            const user = await User.findById(req.session.userId).lean();
+            req.user = user;
+            res.locals.user = user;
+        } catch (error) {
+            console.error('Error fetching user:', error);
+        }
     }
     next();
 });
 
-app.use((req, res, next) => {
-    res.locals.user = req.session.user,
-    res.locals.authenticated = req.session.authenticated
+// Middleware for authentication
+function requireLogin(req, res, next) {
+    if (!req.session.userId) {
+        return res.redirect('/login');
+    }
     next();
-})
+}
+
+
+
+
+
 
 /* -------- INITIALIZE HANDLEBARS -------- */
 
@@ -83,6 +112,11 @@ const Handlebars = expressHbs.create({
 app.engine('.hbs', Handlebars.engine);
 app.set('view engine', '.hbs');
 app.set('views', join(__dirname, 'views')); // Set to the root views directory
+
+
+
+
+
 
 /* -------- FRONTEND ROUTES -------- */
 
@@ -149,10 +183,10 @@ app.get('/restaurant/:id', async (req, res) => {
     });
 });
 
-// Get reviews for a certain restaurant
 app.get('/reviews/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
-    const reviews = await getRestoWithReviews(req.params.id);
+    const reviews = await getReviewsByRestaurantId(req.params.id);
+    const { averageRating, ratingCounts, totalReviews } = await getAverageRatingAndCounts(req.params.id);
 
     res.render('reviews', {
         title: resto.name,
@@ -160,8 +194,10 @@ app.get('/reviews/:id', async (req, res) => {
         restoName: resto.name,
 
         // Reviews
-        reviews: reviews.reviews
-        //totalReviews
+        reviews: reviews,
+        averageRating,
+        ratingCounts,
+        totalReviews
     });
 });
 
@@ -172,6 +208,12 @@ app.get('/settings', (req, res) => {
 app.get('/viewcart', (req, res) => {
     res.render('viewcart', { title: 'View Cart' });
 });
+
+
+
+
+
+
 
 /* -------- AUTHENTICATION ROUTES -------- */
 
@@ -225,7 +267,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-
 // Logout route
 app.post('/logout', (req, res) => {
     req.session.destroy((err) => {
@@ -235,6 +276,10 @@ app.post('/logout', (req, res) => {
         res.redirect('/login');
     });
 });
+
+
+app.post('/viewcart', addItemToCart);
+
 
 /* -------- PROTECTED ROUTE MIDDLEWARE -------- */
 function requireLogin(req, res, next) {
@@ -249,6 +294,9 @@ app.get('/home', requireLogin, (req, res) => {
     res.render('home', { title: 'Home' });
 });
 
+
+
+
 /* -------- CONNECT TO MONGODB -------- */
 mongoose.connect('mongodb+srv://veryMunchAdmin:th4nkuv3rymunch@cluster0.39an52c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0', { useNewUrlParser: true, useUnifiedTopology: true, dbname: 'VeryMunchDB' }) 
     .then(() => {
@@ -257,6 +305,10 @@ mongoose.connect('mongodb+srv://veryMunchAdmin:th4nkuv3rymunch@cluster0.39an52c.
     .catch(err => {
         console.error('MongoDB connection error:', err);
     });
+
+
+
+
 
 /* -------- START SERVER -------- */
 const PORT = 3000; 
