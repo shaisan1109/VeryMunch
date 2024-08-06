@@ -65,12 +65,12 @@
             <hr>
             <h2>Past Orders</h2>
             {{#each pastOrders}}
-            <div class="past-order" data-order-id="{{this.id}}">
+            <div class="past-order" data-order-id="{{this._id}}">
                 <div class="past-order-image">
-                    <img src="{{this.image}}" alt="Order Image">
+                    <img src={{this.restaurant.thumbnail}} alt="Order Image">
                 </div>
                 <div class="order-details">
-                    <h3>{{this.restaurant}}</h3>
+                    <h3>{{this.restaurant.name}}</h3>
                     <p>Delivered on {{this.deliveryDate}}</p>
                     <div class="item-list">
                         {{#each this.items}}
@@ -86,61 +86,63 @@
                     </div>
                 </div>
             </div>
-            {{/each}}
-        </div>
-    </div>
-</div>
 
-<!-- The Modal -->
-<div id="myModal" class="modal">
-    <div class="modal-content">
-        <span class="close">&times;</span>
-        <h2>Order Details</h2>
-        <div class="modal-order-details">
-            <div class="modal-order-image">
-                <img src="https://via.placeholder.com/100" alt="Order Image">
+            <!-- The Modal -->
+            <div id="myModal" class="modal">
+                <div class="modal-content">
+                    <span class="close">&times;</span>
+                    <h2>Order Details</h2>
+                    <div class="modal-order-details">
+                        <div class="modal-order-image">
+                            <img src={{this.restaurant.thumbnail}} width="100" alt="Order Image">
+                        </div>
+                        <div class="modal-order-info">
+                            <h3>{{this.restaurant.name}}</h3>
+                            <p>Delivered on {{this.deliveryDate}}</p>
+                            <p>Order #{{this._id}}</p>
+                        </div>
+                        <div class="button-container">
+                            <button class="reorder-button">Reorder</button>
+                            <button class="rate-order-button">Rate Order</button>
+                        </div>
+                    </div>
+                    <hr>
+                    <h3>Ordered from</h3>
+                    <p>{{this.restaurant.name}}</p>
+                    <h3>Delivered to</h3>
+                    <p>{{../user.location.street}}, {{../user.location.city}}, {{../user.location.province}}</p>
+                    <hr>
+                    <h3>Order Summary</h3>
+                    <div class="order-summary-item">
+                        {{#each this.items}}
+                        <p>{{this.quantity}}x {{this.name}}</p>
+                        <p class="price">P 240.00</p>
+                        {{/each}}
+                    </div><br>
+                    <div class="order-summary-item">
+                        <p>Closing deal (60% off)</p>
+                        <p class="price">P -144.00</p>
+                    </div>
+                    <div class="order-summary-item">
+                        <p>Subtotal</p>
+                        <p class="price">P 96.00</p>
+                    </div>
+                    <div class="order-summary-item">
+                        <p>Delivery fee</p>
+                        <p class="price">P 34.00</p>
+                    </div>
+                    <div class="order-summary-item">
+                        <p>Total (incl. VAT)</p>
+                        <p class="price">P 130.00</p>
+                    </div>
+                    <h3>Paid with</h3>
+                    <div class="order-summary-item">
+                        <p>Cash on delivery</p>
+                        <p class="price">P 130.00</p>
+                    </div>
+                </div>
             </div>
-            <div class="modal-order-info">
-                <h3>Dunkin' Donuts LM Building</h3>
-                <p>Delivered on Saturday, July 13, at 1:11 PM</p>
-                <p>Order #7792-2428-544h</p>
-            </div>
-            <div class="button-container">
-                <button class="reorder-button">Reorder</button>
-                <button class="rate-order-button">Rate Order</button>
-            </div>
-        </div>
-        <hr>
-        <h3>Ordered from</h3>
-        <p>Dunkin' Donuts LM Building</p>
-        <h3>Delivered to</h3>
-        <p>Avida Towers Prime Taft, Pasay City, Philippines</p>
-        <hr>
-        <h3>Order Summary</h3>
-        <div class="order-summary-item">
-            <p>1x 6pcs Premium Donuts</p>
-            <p class="price">P 240.00</p>
-        </div>
-        <div class="order-summary-item">
-            <p>Closing deal (60% off)</p>
-            <p class="price">P -144.00</p>
-        </div>
-        <div class="order-summary-item">
-            <p>Subtotal</p>
-            <p class="price">P 96.00</p>
-        </div>
-        <div class="order-summary-item">
-            <p>Delivery fee</p>
-            <p class="price">P 34.00</p>
-        </div>
-        <div class="order-summary-item">
-            <p>Total (incl. VAT)</p>
-            <p class="price">P 130.00</p>
-        </div>
-        <h3>Paid with</h3>
-        <div class="order-summary-item">
-            <p>Cash on delivery</p>
-            <p class="price">P 130.00</p>
+            {{/each}}
         </div>
     </div>
 </div>

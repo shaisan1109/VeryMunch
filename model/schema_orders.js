@@ -4,11 +4,9 @@ const { Schema, model } = mongoose;
 
 const orderSchema = new Schema({
     restaurant: {
-        type: String,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Restaurant',
         required: true
-    },
-    image: {
-        type: String
     },
     deliveryDate: {
         type: String

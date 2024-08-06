@@ -42,7 +42,12 @@ export const getUserWithOrders = async (id) => {
     try {
         const user = await User.findById(id)
             .select("orders -_id")
-            .populate("orders")
+            .populate({
+                path : 'orders',
+                populate : {
+                  path : 'restaurant'
+                }
+              })
             .lean();
         return user;
     } catch {

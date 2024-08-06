@@ -130,10 +130,10 @@
                 <!-- Order summary -->
                 <div class="order-summary-container">
                     <span id="order-summary-label">Order Summary</span>
-                    {{#each orderSummary}}
+                    {{#each cartItems}}
                     <div class="order-summary-product-list">
-                        <div class="cart-summary-item-name">{{this.productName}} {{this.quantity}}</div>
-                        <div class="cart-summary-item-price">{{this.price}}</div>
+                        <div class="cart-summary-item-name">{{this.quantity}}x {{this.menu.name}}</div>
+                        <div class="cart-summary-item-price">{{this.menu.price}}</div>
                     </div>
                     {{/each}}
                     <div class="subtotal-fee-container">

@@ -43,46 +43,45 @@ export const getRestoWithReviews = async (id) => {
 }
 
 // Get specific restaurant with id, menu, and reviews
-export const getRestoWithMenuAndReviews = async (id) => {
-    try {
-        const result = await Restaurant.aggregate([
-            { $match: { _id: new mongoose.Types.ObjectId(id) } },
-            {
-                $lookup: {
-                    from: 'menus', // Collection name for Menu
-                    localField: 'menu',
-                    foreignField: '_id',
-                    as: 'menuItems'
-                }
-            },
-            {
-                $lookup: {
-                    from: 'reviews', // Collection name for Review
-                    localField: 'reviews',
-                    foreignField: '_id',
-                    as: 'reviewItems'
-                }
-            },
-            {
-                $addFields: {
-                    averageRating: {
-                        $avg: '$reviewItems.rating'
-                    },
-                    reviewCount: {
-                        $size: '$reviewItems'
-                    }
-                }
-            }
-        ]).exec();
+// export const getRestoWithMenuAndReviews = async (id) => {
+//     try {
+//         const result = await Restaurant.aggregate([
+//             { $match: { _id: new mongoose.Types.ObjectId(id) } },
+//             {
+//                 $lookup: {
+//                     from: 'menus', // Collection name for Menu
+//                     localField: 'menu',
+//                     foreignField: '_id',
+//                     as: 'menuItems'
+//                 }
+//             },
+//             {
+//                 $lookup: {
+//                     from: 'reviews', // Collection name for Review
+//                     localField: 'reviews',
+//                     foreignField: '_id',
+//                     as: 'reviewItems'
+//                 }
+//             },
+//             {
+//                 $addFields: {
+//                     averageRating: {
+//                         $avg: '$reviewItems.rating'
+//                     },
+//                     reviewCount: {
+//                         $size: '$reviewItems'
+//                     }
+//                 }
+//             }
+//         ]).exec();
 
-        return result[0]; // Aggregation returns an array
-    } catch (error) {
-        throw new Error('Error fetching restaurant with menu and reviews');
-    }
-};
+//         return result[0]; // Aggregation returns an array
+//     } catch (error) {
+//         throw new Error('Error fetching restaurant with menu and reviews');
+//     }
+// };
 
 export default { getAllRestos,
     getRestoById,
     getRestoWithMenu,
-    getRestoWithReviews,
-    getRestoWithMenuAndReviews };
+    getRestoWithReviews };

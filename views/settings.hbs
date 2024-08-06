@@ -68,32 +68,32 @@
                 <div class="details__name">
                     <div class="name__first">
                         <h3 class="first__label">First Name</h3>
-                        <input name="First Name Input" placeholder="Enter first name" type="text" class="textfield-register" value="{{firstName}}" />
+                        <input name="First Name Input" placeholder="Enter first name" type="text" class="textfield-register" value="{{user.firstName}}" />
                     </div>
                     <div class="name__last">
                         <h3 class="last__label">Last Name</h3>
-                        <input name="Last Name Input" placeholder="Enter last name" type="text" class="textfield-register" value="{{lastName}}" />
+                        <input name="Last Name Input" placeholder="Enter last name" type="text" class="textfield-register" value="{{user.lastName}}" />
                     </div>
                 </div>
                 <h3 class="details__password-label">Password</h3>
                 <div class="details__password">
                     <div class="password-wrapper">
-                        <input name="Password Input" placeholder="Enter password" type="password" class="textfield-register password-input" value="********" />
+                        <input name="Password Input" placeholder="Enter password" type="password" class="textfield-register password-input" value="{{user.login.password}}" />
                         <button class="change-password-button">CHANGE PASSWORD</button>
                     </div>
                 </div>
 
                 <h3 class="details__email-label">Email</h3>
                 <div class="details__email">
-                    <input name="Email Input" placeholder="Enter email" type="email" class="textfield-register" value="{{email}}" />
+                    <input name="Email Input" placeholder="Enter email" type="email" class="textfield-register" value="{{user.login.email}}" />
                 </div>
                 <h3 class="details__phone-label">Phone</h3>
                 <div class="details__phone">
-                    <input name="Phone Input" placeholder="Enter phone number" type="text" class="textfield-register" value="{{phone}}" />
+                    <input name="Phone Input" placeholder="Enter phone number" type="text" class="textfield-register" value="{{user.phone}}" />
                 </div>
                 <h3 class="details__location-label">Location</h3>
                 <div class="details__location">
-                    <input name="Location Input" placeholder="Enter location" type="text" class="textfield-register" value="{{location}}" />
+                    <input name="Location Input" placeholder="Enter location" type="text" class="textfield-register" value="{{location.street}}, {{location.city}}, {{location.province}}" />
                 </div>
                 <h3 class="details__payment-label">Payment Method</h3>
                 <div class="details__payment">

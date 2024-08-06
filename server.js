@@ -16,8 +16,7 @@ import { dirname, join } from 'path'; // Import dirname and join
 import { getAllRestos,
     getRestoById,
     getRestoWithMenu,
-    getRestoWithReviews,
-    getRestoWithMenuAndReviews } from './model/controller_restaurant.js';
+    getRestoWithReviews } from './model/controller_restaurant.js';
 
 import { getAllCategories } from './model/controller_category.js';
 import { addItemToCart, getCartItemWithInfo } from './model/controller_viewcart.js';
@@ -32,6 +31,7 @@ import { getUserWithReviews, getUserWithCart, getUserWithOrders } from './model/
 import Menu from './model/schema_menu.js';
 import Review from './model/schema_review.js';
 import Order from './model/schema_orders.js';
+import Restaurant from './model/schema_restaurant.js';
 
 
 
@@ -162,12 +162,13 @@ app.get('/login', (req, res) => {
 app.get('/order-history/:id', async (req, res) => {
     const pastOrders = await getUserWithOrders(req.params.id);
 
-    console.log(pastOrders);
+    //console.log(pastOrders);
 
     res.render('order-history', {
         title: 'Order History',
         userProfileImage: req.user.image,
         userId: req.user._id,
+        user: req.user,
 
         pastOrders: pastOrders.orders
     });
@@ -204,7 +205,9 @@ app.get('/restaurant/:id', async (req, res) => {
 app.get('/reviews/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
     const reviews = await getRestoWithReviews(req.params.id);
-    const { averageRating, ratingCounts, totalReviews } = await getAverageRatingAndCounts(req.params.id);
+    
+    const totalReviews = Object.keys(reviews.reviews).length;
+    //const { averageRating, ratingCounts, totalReviews } = await getAverageRatingAndCounts(req.params.id);
 
     res.render('reviews', {
         title: resto.name,
@@ -218,8 +221,8 @@ app.get('/reviews/:id', async (req, res) => {
 
         // Reviews
         reviews: reviews.reviews,
-        averageRating,
-        ratingCounts,
+        // averageRating,
+        // ratingCounts,
         totalReviews
     });
 });
@@ -242,12 +245,15 @@ app.get('/settings', (req, res) => {
     res.render('settings', {
         title: 'Settings',
         userProfileImage: req.user.image,
-        userId: req.user._id
+        userId: req.user._id,
+        user: req.user,
+        location: req.user.location
     });
 });
 
 app.get('/viewcart/:id', async (req, res) => {
     const userCart = await getUserWithCart(req.params.id);
+    const cartItemsCount = Object.keys(userCart.cart).length;
 
     res.render('viewcart', {
         title: 'View Cart',
@@ -255,7 +261,8 @@ app.get('/viewcart/:id', async (req, res) => {
         userProfileImage: req.user.image,
         userId: req.user._id,
 
-        cartItems: userCart.cart
+        cartItems: userCart.cart,
+        cartItemsCount
     });
 });
 
