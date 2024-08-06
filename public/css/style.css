@@ -595,7 +595,8 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 4%;
+    top: 5%;
+    margin-top: 5%;
     width: auto;
     white-space: nowrap;
     padding: 0.5rem 1rem;
@@ -612,7 +613,8 @@ button:hover {
     display: flex;
     align-items: center;
     justify-content: flex-start;
-    margin-top: 18%;
+    top: 5%;
+    margin-top: 20%;
     width: auto;
     white-space: nowrap;
 }
