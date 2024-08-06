@@ -36,7 +36,7 @@ body {
 }
 
 .left-signup-container a {
-    text-decoration: none; /* Removes underline from the link */
+    text-decoration: none; 
 }
 
 #lsu-header1 {
@@ -120,14 +120,14 @@ body {
 
 #rsi-rememberme {
     height: 90%;
-    width: 50%; /* Ensure this width is what you need */
+    width: 50%; 
     display: flex;
     align-items: center;
-    justify-content: center; /* Center content within the button */
+    justify-content: center; 
     color: #396C03;
     font-weight: 600;
     font-size: large;
-    margin: 0 auto; /* Center horizontally if width is set correctly */
+    margin: 0 auto; 
 }
 
 
@@ -153,7 +153,7 @@ body {
     justify-content: center;
     text-align: center;
     white-space: nowrap;
-    margin: 3em auto 0; /* Center horizontally */
+    margin: 3em auto 0; 
 }
 
 
@@ -186,7 +186,7 @@ body {
 }
 
 .textfield-signup {
-    font-family: 'Poppins', sans-serif; /* Use the Poppins font */
+    font-family: 'Poppins', sans-serif; 
     font-weight: 400;
     font-size: larger;
     margin-bottom: 5px; 
@@ -197,22 +197,22 @@ body {
     margin: 10px 0; 
     margin-left: 60px;
     box-sizing: border-box; 
-    border: 2px solid #ccc; /* Add a border */
-    border-radius: 50px; /* Rounded corners */
+    border: 2px solid #ccc; 
+    border-radius: 50px; 
 }
 
 .textfield-label-register {
     font-weight: 600;
     font-size: x-large;
-    margin-bottom: 5px; /* Space between label and field */
-    text-align: left; /* Ensure label text aligns left */
+    margin-bottom: 5px; 
+    text-align: left; 
 }
 
 
 
 .buttoncontainer-register {
     height: 15%;
-    width: 100px; /* Added px unit */
+    width: 100px; 
     display: flex-end;
     justify-content: flex-end;
     align-items: center;
@@ -766,17 +766,17 @@ button:hover {
 
 /* Modal Background */
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
+    display: none; 
+    position: fixed; 
+    z-index: 1; 
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
-    align-items: center; /* Center vertically */
-    justify-content: center; /* Center horizontally */
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.4); 
+    align-items: center; 
+    justify-content: center; 
 }
 
 /* Modal Content Box */
@@ -949,7 +949,7 @@ button:hover {
 /* Password Input Field */
 .password-input {
     width: 100%;
-    padding-right: 140px; /* Ensure space for the change password button */
+    padding-right: 140px; 
 }
 
 /* Change Password Button */
@@ -1263,7 +1263,7 @@ button:hover {
     color: #396C03;
     display: flex;
     align-items: center;
-    justify-content: flex-start; /* Aligns the content to the left */
+    justify-content: flex-start; 
 }
 
 /* FAQ Answer */
@@ -1271,14 +1271,14 @@ button:hover {
     font-size: 1rem;
     color: #666;
     margin-top: 1rem;
-    display: none; /* Initially hidden */
+    display: none; 
     padding-left: 1rem;
 }
 
 /* Arrow Icon */
 .faq-question .material-symbols-outlined {
     font-size: 1.5rem;
-    margin-right: 1rem; /* Adds space between the icon and the question */
+    margin-right: 1rem; 
     transition: transform 0.3s;
 }
 
@@ -1294,7 +1294,7 @@ button:hover {
 .right-home-header {
     height: 4em;
     display: flex;
-    margin-bottom: 1rem; /* Reduced margin-bottom */
+    margin-bottom: 1rem; 
     font-weight: 600;
 }
 
