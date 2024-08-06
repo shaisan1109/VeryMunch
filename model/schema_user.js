@@ -23,7 +23,15 @@ const userSchema = new mongoose.Schema({
     phone: {
         type: String,
         required: false // Adjust if needed
-    }
+    },
+    reviews: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'Review'
+    }],
+    cart: [{
+        type: mongoose.Schema.Types.ObjectId,
+        ref: 'CartItem'
+    }]
 });
 
 const User = mongoose.model('User', userSchema, 'users');

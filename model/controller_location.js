@@ -8,6 +8,16 @@ export const getAllLocations = async () => {
     } catch (error) {
         throw new Error('Error fetching locations');
     }
-};
+}
 
-export default { getAllLocations };
+// Get location with region
+export const getProvinces = async (region) => {
+    try {
+        const location = await Location.find({ region }).lean();
+        return location;
+    } catch {
+        throw new Error('Error fetching provinces');
+    }
+}
+
+export default { getAllLocations, getProvinces };

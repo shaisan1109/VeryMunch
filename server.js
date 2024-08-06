@@ -20,9 +20,11 @@ import { getAllRestos,
     getRestoWithMenuAndReviews } from './model/controller_restaurant.js';
 
 import { getAllCategories } from './model/controller_category.js';
-import { addItemToCart } from './model/controller_viewcart.js';
+import { addItemToCart, getCartItemWithInfo } from './model/controller_viewcart.js';
 import { getReviewsByRestaurantId, getAverageRatingAndCounts } from './model/controller_review.js'; 
-import { getAllLocations } from './model/controller_location.js';  // Import location controller
+import { getAllLocations, getProvinces } from './model/controller_location.js';  // Import location controller
+
+import { getUserWithReviews, getUserWithCart } from './model/controller_user.js';
 
 
 
@@ -139,6 +141,9 @@ app.get('/help', (req, res) => {
 app.get('/home', async (req, res) => {
     const restaurants = await getAllRestos();
     const categories = await getAllCategories();
+    const locations = await getProvinces(req.user.location.region);
+
+    console.log(locations);
 
     res.render('home', {
         title: 'Home',
@@ -146,7 +151,8 @@ app.get('/home', async (req, res) => {
         categories,
         userName: req.user.firstName,
         userProfileImage: req.user.image,
-        userId: req.user._id
+        userId: req.user._id,
+        locations: locations.provinces
     });
 });
 
@@ -169,7 +175,6 @@ app.get('/register', (req, res) => {
 // Main restaurant display
 app.get('/restaurant/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
-    //const menu = await getRestoWithMenu(req.params.id);
     const menu = await getRestoWithMenu(req.params.id);
 
     res.render('selectedresto', {
@@ -215,12 +220,16 @@ app.get('/reviews/:id', async (req, res) => {
 });
 
 // Reviews by a user
-app.get('user_reviews/:id', async (req, res) => {
+app.get('/user_reviews/:id', async (req, res) => {
+    const reviews = await getUserWithReviews(req.params.id);
+
     res.render('reviews', {
         // Determine whether it's a restaurant or user
         forResto: false,
         userProfileImage: req.user.image,
-        userId: req.user._id
+        userId: req.user._id,
+
+        reviews: reviews.reviews
     });
 });
 
@@ -232,11 +241,18 @@ app.get('/settings', (req, res) => {
     });
 });
 
-app.get('/viewcart', (req, res) => {
+app.get('/viewcart/:id', async (req, res) => {
+    const userCart = await getUserWithCart(req.params.id);
+    const cart = userCart.cart;
+
+    console.log(userCart.cart);
+
     res.render('viewcart', {
         title: 'View Cart',
         userProfileImage: req.user.image,
-        userId: req.user._id
+        userId: req.user._id,
+
+        cartItems: userCart.cart
     });
 });
 
@@ -344,5 +360,6 @@ mongoose.connect('mongodb+srv://veryMunchAdmin:th4nkuv3rymunch@cluster0.39an52c.
 /* -------- START SERVER -------- */
 const PORT = 3000; 
 app.listen(PORT, () => {
+    console.log();
     console.log('Server is starting at port', PORT);
 });

@@ -65,13 +65,13 @@
                 {{#each cartItems}}
                 <div class="cart-items-selector">
                     <div class="cart-items-image">
-                        <img src="{{this.imageUrl}}" alt="{{this.productName}}">
+                        <img src="{{this.menu.image}}" alt="{{this.menu.name}}">
                     </div>
                     <div class="cart-items-details">
-                        <span class="cart-items-productname">{{this.productName}}</span>
+                        <span class="cart-items-productname">{{this.menu.name}}</span>
                         <span>{{this.storeAddress}}</span>
-                        <span>{{this.price}}</span>
-                        <span class="cart-items-productdesc">{{this.description}}</span>
+                        <span>{{this.menu.price}}</span>
+                        <span class="cart-items-productdesc">{{this.menu.description}}</span>
                     </div>
                     <div class="cart-items-quantity-container">
                         <div class="cart-items-totalprice">Total: {{this.totalPrice}}</div>

@@ -76,16 +76,16 @@
                     </span>
                     <span id="total-review-style">{{totalReviews}} reviews</span>
                 </div>
-            {{/if}}
             
-            <div class="review-counts-container">
-                {{#each ratingCounts}}
-                <div class="rating-status-container">
-                    <span id="rating-number-style">{{@key}}</span>
-                    <progress id="rating-bar-style" value="{{this}}" max="100"></progress>
+                <div class="review-counts-container">
+                    {{#each ratingCounts}}
+                    <div class="rating-status-container">
+                        <span id="rating-number-style">{{@key}}</span>
+                        <progress id="rating-bar-style" value="{{this}}" max="100"></progress>
+                    </div>
+                    {{/each}}
                 </div>
-                {{/each}}
-            </div>
+            {{/if}}
             
             {{#each reviews}}
             <div class="review-container">

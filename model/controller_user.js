@@ -15,8 +15,26 @@ export const getUserWithReviews = async (id) => {
         const user = await User.findById(id).populate("reviews").lean();
         return user;
     } catch (error) {
-        throw new Error('Error fetching restaurant with reviews');
+        throw new Error('Error fetching user with reviews');
     }
 }
 
-export default { getUser, getUserWithReviews };
+// Get user with cart items
+export const getUserWithCart = async (id) => {
+    try {
+        const user = await User
+            .findById(id)
+            .populate({
+                path : 'cart',
+                populate : {
+                  path : 'menu'
+                }
+              })
+            .lean();
+        return user;
+    } catch {
+        throw new Error('Error fetching user with cart');
+    }
+}
+
+export default { getUser, getUserWithReviews, getUserWithCart };
