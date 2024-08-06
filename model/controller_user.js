@@ -9,4 +9,14 @@ export const getUser = async (email) => {
     }
 };
 
-export default getUser;
+// Get specific user with id PLUS reviews
+export const getUserWithReviews = async (id) => {
+    try {
+        const user = await User.findById(id).populate("reviews").lean();
+        return user;
+    } catch (error) {
+        throw new Error('Error fetching restaurant with reviews');
+    }
+}
+
+export default { getUser, getUserWithReviews };

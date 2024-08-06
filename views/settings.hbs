@@ -25,7 +25,7 @@
             <span class="material-symbols-outlined">list_alt</span>
             Order History
         </a>
-        <a href="/reviews" class="navbar-option-container">
+        <a href="/user_reviews/{{userId}}" class="navbar-option-container">
             <span class="material-symbols-outlined">reviews</span>
             Reviews
         </a>
@@ -51,10 +51,10 @@
                     <span class="material-symbols-outlined toolbar-icon">notifications</span>
                 </span>
                 <span class="toolbar-container">
-                    <span class="material-symbols-outlined toolbar-icon">shopping_cart</span>
+                    <a href="/viewcart/{{userId}}" class="restaurant-link"><span class="material-symbols-outlined toolbar-icon">shopping_cart</span></a>                </span>
                 </span>
                 <span class="toolbar-container">
-                    <img src="{{profileImage}}" alt="Profile Image">
+                    <img src={{userProfileImage}} alt="Profile Image">
                 </span>
             </div>
         </div>

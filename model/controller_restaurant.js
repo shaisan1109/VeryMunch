@@ -22,6 +22,26 @@ export const getRestoById = async (id) => {
     }
 };
 
+// Get specific restaurant with id PLUS menu
+export const getRestoWithMenu = async (id) => {
+    try {
+        const resto = await Restaurant.findById(id).populate("menu").lean();
+        return resto;
+    } catch (error) {
+        throw new Error('Error fetching restaurant with menu');
+    }
+}
+
+// Get specific restaurant with id PLUS reviews
+export const getRestoWithReviews = async (id) => {
+    try {
+        const resto = await Restaurant.findById(id).populate("reviews").lean();
+        return resto;
+    } catch (error) {
+        throw new Error('Error fetching restaurant with reviews');
+    }
+}
+
 // Get specific restaurant with id, menu, and reviews
 export const getRestoWithMenuAndReviews = async (id) => {
     try {
@@ -61,4 +81,8 @@ export const getRestoWithMenuAndReviews = async (id) => {
     }
 };
 
-export default { getAllRestos, getRestoById, getRestoWithMenuAndReviews };
+export default { getAllRestos,
+    getRestoById,
+    getRestoWithMenu,
+    getRestoWithReviews,
+    getRestoWithMenuAndReviews };

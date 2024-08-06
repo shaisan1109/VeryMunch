@@ -16,11 +16,12 @@ import { dirname, join } from 'path'; // Import dirname and join
 import { getAllRestos,
     getRestoById,
     getRestoWithMenu,
-    getRestoWithReviews } from './model/controller_restaurant.js';
+    getRestoWithReviews,
+    getRestoWithMenuAndReviews } from './model/controller_restaurant.js';
 
 import { getAllCategories } from './model/controller_category.js';
 import { addItemToCart } from './model/controller_viewcart.js';
-import { getReviewsByRestaurantId, getAverageRatingAndCounts } from './model/controller_reviews.js'; 
+import { getReviewsByRestaurantId, getAverageRatingAndCounts } from './model/controller_review.js'; 
 import { getAllLocations } from './model/controller_location.js';  // Import location controller
 
 
@@ -54,7 +55,8 @@ app.use(cors());
 // Initialize session
 const MongoDBStoreSession = MongoDBStore(session);
 const store = new MongoDBStoreSession({
-    uri: 'mongodb://localhost:27017',
+    //uri: 'mongodb://localhost:27017',
+    uri: 'mongodb+srv://veryMunchAdmin:th4nkuv3rymunch@cluster0.39an52c.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0',
     collection: 'sessions'
 });
 
@@ -127,7 +129,11 @@ app.get('/', (req, res) => {
 
 // Other routes
 app.get('/help', (req, res) => {
-    res.render('help', { title: 'Help' });
+    res.render('help', {
+        title: 'Help',
+        userProfileImage: req.user.image,
+        userId: req.user._id
+    });
 });
 
 app.get('/home', async (req, res) => {
@@ -137,13 +143,11 @@ app.get('/home', async (req, res) => {
     res.render('home', {
         title: 'Home',
         restaurants,
-        categories
+        categories,
+        userName: req.user.firstName,
+        userProfileImage: req.user.image,
+        userId: req.user._id
     });
-});
-
-// To retrieve user for homepage
-app.post('/home', async (req, res) => {
-
 });
 
 app.get('/login', (req, res) => {
@@ -151,24 +155,27 @@ app.get('/login', (req, res) => {
 });
 
 app.get('/order-history', (req, res) => {
-    res.render('order-history', { title: 'Order History' });
+    res.render('order-history', {
+        title: 'Order History',
+        userProfileImage: req.user.image,
+        userId: req.user._id
+    });
 });
 
 app.get('/register', (req, res) => {
     res.render('register', { title: 'Register' });
 });
 
-app.get('/reviews', (req, res) => {
-    res.render('reviews', { title: 'Reviews' });
-});
-
 // Main restaurant display
 app.get('/restaurant/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
+    //const menu = await getRestoWithMenu(req.params.id);
     const menu = await getRestoWithMenu(req.params.id);
 
     res.render('selectedresto', {
         title: resto.name,
+        userProfileImage: req.user.image,
+        userId: req.user._id,
 
         // Main resto data
         restoName: resto.name,
@@ -183,30 +190,54 @@ app.get('/restaurant/:id', async (req, res) => {
     });
 });
 
+// Reviews for a restaurant
 app.get('/reviews/:id', async (req, res) => {
     const resto = await getRestoById(req.params.id);
-    const reviews = await getReviewsByRestaurantId(req.params.id);
+    const reviews = await getRestoWithReviews(req.params.id);
     const { averageRating, ratingCounts, totalReviews } = await getAverageRatingAndCounts(req.params.id);
 
     res.render('reviews', {
         title: resto.name,
+        userProfileImage: req.user.image,
+        userId: req.user._id,
         id: req.params.id,
         restoName: resto.name,
 
+        // Determine whether it's a restaurant or user
+        forResto: true,
+
         // Reviews
-        reviews: reviews,
+        reviews: reviews.reviews,
         averageRating,
         ratingCounts,
         totalReviews
     });
 });
 
+// Reviews by a user
+app.get('user_reviews/:id', async (req, res) => {
+    res.render('reviews', {
+        // Determine whether it's a restaurant or user
+        forResto: false,
+        userProfileImage: req.user.image,
+        userId: req.user._id
+    });
+});
+
 app.get('/settings', (req, res) => {
-    res.render('settings', { title: 'Settings' });
+    res.render('settings', {
+        title: 'Settings',
+        userProfileImage: req.user.image,
+        userId: req.user._id
+    });
 });
 
 app.get('/viewcart', (req, res) => {
-    res.render('viewcart', { title: 'View Cart' });
+    res.render('viewcart', {
+        title: 'View Cart',
+        userProfileImage: req.user.image,
+        userId: req.user._id
+    });
 });
 
 
@@ -282,12 +313,12 @@ app.post('/viewcart', addItemToCart);
 
 
 /* -------- PROTECTED ROUTE MIDDLEWARE -------- */
-function requireLogin(req, res, next) {
-    if (!req.session.userId) {
-        return res.redirect('/login');
-    }
-    next();
-}
+// function requireLogin(req, res, next) {
+//     if (!req.session.userId) {
+//         return res.redirect('/login');
+//     }
+//     next();
+// }
 
 // Protect routes
 app.get('/home', requireLogin, (req, res) => {

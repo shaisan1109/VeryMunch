@@ -23,7 +23,7 @@
                 <span class="material-symbols-outlined">list_alt</span>
                 Order History
             </a>
-            <a href="/reviews" class="navbar-option-container">
+            <a href="/user_reviews/{{userId}}" class="navbar-option-container">
                 <span class="material-symbols-outlined">reviews</span>
                 Reviews
             </a>
@@ -52,9 +52,7 @@
                         </span>
                     </span>
                     <span class="toolbar-container">
-                        <span class="material-symbols-outlined toolbar-icon">
-                            shopping_cart
-                        </span>
+                        <a href="/viewcart/{{userId}}" class="restaurant-link"><span class="material-symbols-outlined toolbar-icon">shopping_cart</span></a>                </span>
                     </span>
                     <span class="toolbar-container">
                         <img src="https://preview.redd.it/red-velvet-cosmic-mv-and-references-to-midsommar-2019-v0-z9sqlhyywh8d1.jpg?width=640&crop=smart&auto=webp&s=32cd83e568e234e5b00fedea9a8f6de9c81cc81e" alt="Profile Image">
@@ -62,21 +60,23 @@
                 </div>
             </div>
             
-            <div class="breadcrumb-container">
-                <a href="/home">Home</a> > <a href="/restaurant/{{id}}">{{restoName}}</a> > Reviews
-            </div>
-            
-            <div class="reviews-and-ratings-label">
-                Reviews and Ratings
-            </div>
-            
-            <div class="total-reviews-container">
-                <span id="average-review-style">{{averageRating}}</span>
-                <span class="material-symbols-outlined" id="reviews-and-rating-star">
-                    star
-                </span>
-                <span id="total-review-style">{{totalReviews}} reviews</span>
-            </div>
+            {{#if forResto}}
+                <div class="breadcrumb-container">
+                    <a href="/home">Home</a> > <a href="/restaurant/{{id}}">{{restoName}}</a> > Reviews
+                </div>
+                
+                <div class="reviews-and-ratings-label">
+                    Reviews and Ratings
+                </div>
+                
+                <div class="total-reviews-container">
+                    <span id="average-review-style">{{averageRating}}</span>
+                    <span class="material-symbols-outlined" id="reviews-and-rating-star">
+                        star
+                    </span>
+                    <span id="total-review-style">{{totalReviews}} reviews</span>
+                </div>
+            {{/if}}
             
             <div class="review-counts-container">
                 {{#each ratingCounts}}
